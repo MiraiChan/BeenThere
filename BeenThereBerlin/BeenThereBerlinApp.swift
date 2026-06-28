@@ -11,7 +11,7 @@ import SwiftUI
 struct BeenThereBerlinApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AttendedView()
         }
     }
 }
