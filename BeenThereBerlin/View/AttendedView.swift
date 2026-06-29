@@ -28,5 +28,5 @@ struct AttendedView: View {
 }
 
 #Preview {
-  AttendedView()
+  AttendedView().modelContainer(for: Show.self, inMemory: true)
 }

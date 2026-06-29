@@ -12,7 +12,7 @@ import SwiftData
 struct BeenThereBerlinApp: App {
     var body: some Scene {
         WindowGroup {
-            AttendedView()
+            MainTabView()
         }
         .modelContainer(for: Show.self)
     }
