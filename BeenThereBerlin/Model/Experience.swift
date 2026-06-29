@@ -6,8 +6,11 @@
 //
 import Foundation
 import SwiftData
+import SwiftUI
 
-enum ShowStatus { //ExperienceStatus
+//Codable → can be saved to the database
+//CaseIterable → you can list all cases (for example, for Picker)
+enum ShowStatus: String, Codable, CaseIterable { //rename to ExperienceStatus
   case attended
   case upcoming
 }
@@ -34,7 +37,20 @@ final class Show {
     self.rating = nil
     self.notes = nil
     self.setlist = []
-    self.createdAt = .now()
+    self.createdAt = .now
   }
 }
 
+#Preview {
+  //Creating a temporary database (in-memory)
+  let config = ModelConfiguration(isStoredInMemoryOnly: true)
+  //Creating a SwiftData container, launching
+  let container = try! ModelContainer(for: Show.self, configurations: config)
+  //Creating test data
+  let sample = Show(artistName: "MGK", venueName: "Coke Arena", city: "Toronto", date: .now, status: .attended)
+  //this object must exist in the database
+  container.mainContext.insert(sample)
+  //Text(sample.artistName) → The UI you see in Preview
+  //.modelContainer(container) → connects SwiftData to this UI
+  return Text(sample.artistName).modelContainer(container)
+}

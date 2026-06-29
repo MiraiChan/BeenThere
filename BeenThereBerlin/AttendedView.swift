@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AttendedView: View {
-  @State private var shows: [Show] = []
+  @Query private var shows: [Show] = []
+  @Environment(\.modelContext) private var modelContext
   var body: some View {
     NavigationStack {
       List(shows) { show in
@@ -18,7 +20,7 @@ struct AttendedView: View {
       .toolbar {
         Button("Add show!",
                systemImage: "plus") {
-          shows.append(Show(artistName: "Radiohead", venueName: "Madison", city: "New York", date: .now, status: .attended))
+          modelContext.insert(Show(artistName: "Radiohead", venueName: "Madison", city: "New York", date: .now, status: .attended))
         }
       }
     }
