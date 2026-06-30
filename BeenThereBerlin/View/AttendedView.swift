@@ -9,12 +9,28 @@ import SwiftUI
 import SwiftData
 
 struct AttendedView: View {
-  @Query private var shows: [Show] = []
+  @Query(sort: \Show.date, order: .reverse) private var allShows: [Show] = []
   @Environment(\.modelContext) private var modelContext
+  @State private var viewModel = AttendedViewModel()
   var body: some View {
+    @Bindable var vm = viewModel
     NavigationStack {
-      List(shows) { show in
-        Text(show.artistName)
+      Group {
+        if viewModel.filteredShows(allShows).isEmpty {
+          ContentUnavailableView("No Results", systemImage: "magnifyingglass")
+        } else {
+          List {
+            ForEach(viewModel.filteredShows(allShows)) { show in
+              Text(show.artistName)
+            }
+            .onDelete { indexSet in
+              let shows = viewModel.filteredShows(allShows)
+              for index in indexSet {
+                viewModel.delete(shows[index], context: modelContext)
+              }
+            }
+          }
+        }
       }
       .navigationTitle("Attended")
       .toolbar {
