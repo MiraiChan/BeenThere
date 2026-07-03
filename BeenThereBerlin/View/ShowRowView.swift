@@ -40,7 +40,3 @@ struct ShowRowView: View {
     .padding(.vertical, 2)
   }
 }
-
-#Preview {
-  ShowRowView(show: Show(artistName: "MGK", venueName: "Coke Arena", city: "Toronto", date: .now, status: .attended))
-}
