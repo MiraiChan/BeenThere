@@ -17,7 +17,27 @@ struct UpcomingView: View {
         @Bindable var vm = viewModel
       
       NavigationStack {
-        Group{}
+        Group{
+          if viewModel.filteredShows(allShows).isEmpty {
+            ContentUnavailableView("No Upcoming Shows", systemImage: "calendar")
+          } else {
+            List {
+              ForEach(viewModel.filteredShows(allShows)) { show in
+                NavigationLink(value: show) {
+                  ShowRowView(show: show)
+                }
+              }
+              .onDelete {
+                indexSet in
+                
+                let shows = viewModel.filteredShows(allShows)
+                for index in indexSet {
+                  viewModel.delete(shows[index], context: modelContext)
+                }
+              }
+            }
+          }
+        }
       }
     }
 }
