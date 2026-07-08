@@ -38,6 +38,17 @@ struct UpcomingView: View {
             }
           }
         }
+        .navigationTitle("Upcoming")
+        .navigationDestination(for: Show.self) { show in
+          //ShowDetailView
+        }
+        .toolbar {
+          ToolbarItem(placement: .primaryAction) {
+            Button("Add Show", systemImage: "plus") {
+              viewModel.showingAddSheet = true
+            }
+          }
+        }
       }
     }
 }
