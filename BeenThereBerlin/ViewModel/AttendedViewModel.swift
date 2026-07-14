@@ -19,7 +19,7 @@ final class AttendedViewModel {
     return attended.filter {
       $0.artistName.localizedCaseInsensitiveContains(searchText) ||
       $0.venueName.localizedCaseInsensitiveContains(searchText) ||
-      $0.city.localizedCaseInsensitiveContains(searchText)
+      $0.location.localizedCaseInsensitiveContains(searchText)
     }
   }
   

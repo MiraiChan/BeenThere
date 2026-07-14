@@ -19,7 +19,7 @@ enum ShowStatus: String, Codable, CaseIterable { //rename to ExperienceStatus
 final class Show {
   var artistName: String
   var venueName: String
-  var city: String
+  var location: String
   var date: Date
   var status: ShowStatus
   
@@ -31,7 +31,7 @@ final class Show {
   init(artistName: String, venueName: String, city: String, date: Date, status: ShowStatus) {
     self.artistName = artistName
     self.venueName = venueName
-    self.city = city
+    self.location = location
     self.date = date
     self.status = status
     self.rating = nil

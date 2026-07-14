@@ -24,15 +24,19 @@ final class AddEditShowViewModel {
     !artistName.trimmingCharacters(in: .whitespaces).isEmpty && !venueName.trimmingCharacters(in: .whitespaces).isEmpty
   }
   
-  init(artistName: String = "", venueName: String = "", location: String = "", date: Date = Date(), status: ShowStatus, rating: Int, notes: String = "", setlist: [String], newSetlistEntry: String = "") {
-    self.artistName = artistName
-    self.venueName = venueName
-    self.location = location
-    self.date = date
-    self.status = status
-    self.rating = rating
-    self.notes = notes
-    self.setlist = setlist
-    self.newSetlistEntry = newSetlistEntry
+  init(show: Show? = nil, initialStatus: ShowStatus = .upcoming) {
+    if let show {
+      artistName = show.artistName
+      venueName = show.venueName
+      location = show.location
+      date = show.date
+      status = show.status
+      rating = show.rating ?? 0
+      notes = show.notes ?? ""
+      setlist = show.setlist
+    } else {
+      status = initialStatus
+      date = initialStatus == .attended ? .now : Calendar.current.date(byAdding: .day, value: 7, to: .now) ?? .now
+    }
   }
 }

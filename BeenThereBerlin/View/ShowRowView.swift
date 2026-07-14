@@ -16,7 +16,7 @@ struct ShowRowView: View {
       HStack(spacing: 4) {
         Text(show.venueName)
         Text("-")
-        Text(show.city)
+        Text(show.location)
       }
       .font(.subheadline)
       .foregroundStyle(.secondary)
