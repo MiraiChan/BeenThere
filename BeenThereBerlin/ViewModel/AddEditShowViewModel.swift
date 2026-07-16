@@ -39,4 +39,26 @@ final class AddEditShowViewModel {
       date = initialStatus == .attended ? .now : Calendar.current.date(byAdding: .day, value: 7, to: .now) ?? .now
     }
   }
+  
+  func addSetlistEntry() {
+    let trimmed = newSetlistEntry.trimmingCharacters(in: .whitespaces)
+    guard !trimmed.isEmpty else { return }
+    setlist.append(trimmed)
+    newSetlistEntry = ""
+  }
+  
+  func save(to context: ModelContext, existing show: Show? = nil) {
+    if let show {
+      show.artistName = artistName
+      show.venueName = venueName
+      show.location = location
+      show.date = date
+      show.status = status
+      show.rating = rating > 0 ? rating : nil
+      show.notes = notes.isEmpty ? nil : notes
+      show.setlist = setlist
+    } else {
+      let newShow = Show(artistName: <#T##String#>, venueName: <#T##String#>, location: <#T##String#>, date: <#T##Date#>, status: <#T##ShowStatus#>)
+    }
+  }
 }

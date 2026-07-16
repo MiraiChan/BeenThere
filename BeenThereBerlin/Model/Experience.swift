@@ -28,7 +28,7 @@ final class Show {
   var setlist: [String]
   var createdAt: Date
   
-  init(artistName: String, venueName: String, city: String, date: Date, status: ShowStatus) {
+  init(artistName: String, venueName: String, location: String, date: Date, status: ShowStatus) {
     self.artistName = artistName
     self.venueName = venueName
     self.location = location
@@ -47,7 +47,7 @@ final class Show {
   //Creating a SwiftData container, launching
   let container = try! ModelContainer(for: Show.self, configurations: config)
   //Creating test data
-  let sample = Show(artistName: "MGK", venueName: "Coke Arena", city: "Toronto", date: .now, status: .attended)
+  let sample = Show(artistName: "MGK", venueName: "Coke Arena", location: "Toronto", date: .now, status: .attended)
   //this object must exist in the database
   container.mainContext.insert(sample)
   //Text(sample.artistName) → The UI you see in Preview
