@@ -6,10 +6,21 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AddEditShowView: View {
+  @Environment(\.modelContext) private var modelContext
+  @Environment(\.dismiss) private var dismiss
+  @State private var viewModel: AddEditShowViewModel
+  
+  let existingShow: Show?
+  
+  init(show: Show? = nil, initialStatus: ShowStatus = .upcoming) {
+    self.existingShow = show
+    self._viewModel = State(initialValue: AddEditShowViewModel(show: show, initialStatus: initialStatus))
+  }
     var body: some View {
-        Text("Add Content Here")
+        @Bindable var vm = viewModel
     }
 }
 

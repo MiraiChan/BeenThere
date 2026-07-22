@@ -58,7 +58,11 @@ final class AddEditShowViewModel {
       show.notes = notes.isEmpty ? nil : notes
       show.setlist = setlist
     } else {
-      let newShow = Show(artistName: <#T##String#>, venueName: <#T##String#>, location: <#T##String#>, date: <#T##Date#>, status: <#T##ShowStatus#>)
+      let newShow = Show(artistName: artistName, venueName: venueName, location: location, date: date, status: status)
+      newShow.rating = rating > 0 ? rating : nil
+      newShow.notes = notes.isEmpty ? nil : notes
+      newShow.setlist = setlist
+      context.insert(newShow)
     }
   }
 }
