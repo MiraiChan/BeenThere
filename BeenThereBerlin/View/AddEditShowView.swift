@@ -41,6 +41,17 @@ struct AddEditShowView: View {
           TextField("Add notes...", text: $vm.notes, axis: .vertical)
             .lineLimit(3...6)
         }
+        
+        Section("Setlist") {
+          ForEach(viewModel.setlist.indices, id: \.self) { index in
+            HStack {
+              Text("\(index + 1)")
+                .foregroundStyle(.secondary)
+                .frame(width: 28, alignment: .leading)
+              Text(viewModel.setlist[index])
+            }
+          }
+        }
       }
     }
   }
