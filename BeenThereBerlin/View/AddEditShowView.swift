@@ -51,6 +51,19 @@ struct AddEditShowView: View {
               Text(viewModel.setlist[index])
             }
           }
+          .onDelete {
+            viewModel.setlist.remove(atOffsets: $0)
+          }
+          .onMove {
+            viewModel.setlist.move(fromOffsets: $0, toOffset: $1)
+          }
+          
+          TextField("Add Song" , text: $vm.newSetlistEntry)
+          Button("Add") {
+            viewModel.addSetlistEntry()
+          }
+          .disabled(viewModel.newSetlistEntry
+            .trimmingCharacters(in: .whitespaces).isEmpty)
         }
       }
     }
