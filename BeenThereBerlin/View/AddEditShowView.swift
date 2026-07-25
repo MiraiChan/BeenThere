@@ -36,6 +36,11 @@ struct AddEditShowView: View {
             }
           }
         }
+        
+        Section("Notes") {
+          TextField("Add notes...", text: $vm.notes, axis: .vertical)
+            .lineLimit(3...6)
+        }
       }
     }
   }
