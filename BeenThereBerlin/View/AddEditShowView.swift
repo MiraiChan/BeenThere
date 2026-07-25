@@ -19,11 +19,28 @@ struct AddEditShowView: View {
     self.existingShow = show
     self._viewModel = State(initialValue: AddEditShowViewModel(show: show, initialStatus: initialStatus))
   }
-    var body: some View {
-        @Bindable var vm = viewModel
+  var body: some View {
+    @Bindable var vm = viewModel
+    
+    NavigationStack {
+      Form {
+        Section("Show Info") {
+          TextField("Artist", text: $vm.artistName)
+          TextField("Venue", text: $vm.venueName)
+          TextField("Location", text: $vm.location)
+          DatePicker("Date", selection: $vm.date, displayedComponents: .date)
+          Picker("Status", selection: $vm.status) {
+            ForEach(ShowStatus.allCases, id:\.self) { status in
+              Text(status.rawValue.capitalized)
+                .tag(status)
+            }
+          }
+        }
+      }
     }
+  }
 }
 
 #Preview {
-    AddEditShowView()
+  AddEditShowView()
 }
