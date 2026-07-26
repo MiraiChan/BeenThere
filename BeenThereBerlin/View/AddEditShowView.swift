@@ -67,6 +67,17 @@ struct AddEditShowView: View {
         }
       }
     }
+    .navigationTitle(existingShow == nil ? "Add Show" : "Edit Show")
+    .navigationBarTitleDisplayMode(.inline)
+    .toolbar {
+      ToolbarItem(placement: .cancellationAction) {
+        Button("Cancel") { dismiss() }
+      }
+      ToolbarItem(placement: .confirmationAction) {
+        Button("Save") {
+        }
+      }
+    }
   }
 }
 
