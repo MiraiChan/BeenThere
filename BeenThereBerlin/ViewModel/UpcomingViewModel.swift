@@ -11,6 +11,9 @@ import SwiftData
 @Observable
 final class UpcomingViewModel {
   var showingAddSheet = false
+  var showToMarkAttended: Show?
+  var pendingRating = 0
+  
   func filteredShows(_ shows: [Show]) -> [Show] {
     shows
       .filter { $0.status == .upcoming }
