@@ -66,15 +66,18 @@ struct AddEditShowView: View {
             .trimmingCharacters(in: .whitespaces).isEmpty)
         }
       }
-    }
-    .navigationTitle(existingShow == nil ? "Add Show" : "Edit Show")
-    .navigationBarTitleDisplayMode(.inline)
-    .toolbar {
-      ToolbarItem(placement: .cancellationAction) {
-        Button("Cancel") { dismiss() }
-      }
-      ToolbarItem(placement: .confirmationAction) {
-        Button("Save") {
+      .navigationTitle(existingShow == nil ? "Add Show" : "Edit Show")
+      .navigationBarTitleDisplayMode(.inline)
+      .toolbar {
+        ToolbarItem(placement: .cancellationAction) {
+          Button("Cancel") { dismiss() }
+        }
+        ToolbarItem(placement: .confirmationAction) {
+          Button("Save") {
+            viewModel.save(to: modelContext, existing: existingShow)
+            dismiss()
+          }
+          .disabled(!viewModel.isValid)
         }
       }
     }
