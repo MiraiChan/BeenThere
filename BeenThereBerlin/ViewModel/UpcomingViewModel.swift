@@ -22,4 +22,11 @@ final class UpcomingViewModel {
   func delete(_ show: Show, context: ModelContext) {
     context.delete(show)
   }
+  
+  func markAsAttended(_ show: Show) {
+    show.status = .attended
+    show.rating = pendingRating > 0 ? pendingRating : nil
+    pendingRating = 0
+    showToMarkAttended = nil
+  }
 }

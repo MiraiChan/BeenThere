@@ -39,7 +39,15 @@ struct MarkAttendedSheet: View {
             dismiss()
           }
         }
+        
+        ToolbarItem(placement: .confirmationAction) {
+          Button("Done") {
+            viewModel.markAsAttended(show)
+            dismiss()
+          }
+        }
       }
     }
+    .presentationDetents([.medium])
   }
 }
