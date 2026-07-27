@@ -20,6 +20,25 @@ struct MarkAttendedSheet: View {
           .multilineTextAlignment(.center)
           .lineLimit(2)
           .padding(.top)
+        
+        //StarRatingView
+        
+        Text("Optional - you can always add rating later")
+          .font(.caption)
+          .foregroundStyle(.secondary)
+        Spacer()
+      }
+      .padding()
+      .navigationTitle("Mark as Attended")
+      .navigationBarTitleDisplayMode(.inline)
+      
+      .toolbar {
+        ToolbarItem(placement: .cancellationAction) {
+          Button("Cancel") {
+            viewModel.pendingRating = 0
+            dismiss()
+          }
+        }
       }
     }
   }
