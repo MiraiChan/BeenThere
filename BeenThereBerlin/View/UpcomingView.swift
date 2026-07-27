@@ -60,7 +60,7 @@ struct UpcomingView: View {
         }
         .sheet(item: $vm.showToMarkAttended) {
           show in
-          MarkAttendedSheet()
+          MarkAttendedSheet(show: show, viewModel: viewModel)
         }
       }
     }
