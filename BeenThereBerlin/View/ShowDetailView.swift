@@ -15,8 +15,15 @@ struct ShowDetailView: View {
   @State private var showingDeleteAlert = false
   @State private var newSetlistEntry = ""
   
-  @Environment
     var body: some View {
-        
+      List {
+        Section("Show Info") {
+          LabeledContent("Artist", value: show.artistName)
+          LabeledContent("Venue", value: show.venueName)
+          LabeledContent("Location", value: show.location)
+          LabeledContent("Date", value: show.date.formatted(date: .long, time: .omitted))
+          LabeledContent("Status", value: show.status.rawValue.capitalized)
+        }
+      }
     }
 }

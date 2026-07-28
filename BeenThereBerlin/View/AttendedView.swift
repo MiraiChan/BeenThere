@@ -36,8 +36,8 @@ struct AttendedView: View {
       }
       .navigationTitle("Attended")
       .searchable(text: $vm.searchText, prompt: "Artists, Venues, Cities")
-      .navigationDestination(for: Show.self) { show in 
-        //ShowDetailView
+      .navigationDestination(for: Show.self) { show in
+        ShowDetailView(show: show)
       }
       .toolbar {
         Button("Add show!",

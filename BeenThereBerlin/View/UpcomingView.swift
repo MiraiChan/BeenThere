@@ -46,7 +46,7 @@ struct UpcomingView: View {
         }
         .navigationTitle("Upcoming")
         .navigationDestination(for: Show.self) { show in
-          //ShowDetailView
+          ShowDetailView(show: show)
         }
         .toolbar {
           ToolbarItem(placement: .primaryAction) {
