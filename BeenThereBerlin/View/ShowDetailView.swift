@@ -30,6 +30,16 @@ struct ShowDetailView: View {
           StarRatingView(rating: Binding(get: { show.rating ?? 0 }, set: {show.rating = $0 > 0 ? $0 : nil}))
         }
       }
+      
+      Section("Notes") {
+        if let notes = show.notes,
+           !notes.isEmpty {
+          Text(notes)
+        } else {
+          Text("No notes added!")
+            .foregroundStyle(.secondary)
+        }
+      }
     }
   }
 }
