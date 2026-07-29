@@ -37,6 +37,13 @@ struct AddEditShowView: View {
           }
         }
         
+        if viewModel.status == .attended {
+          Section("Rating") {
+            StarRatingView(rating: $vm.rating)
+              .padding(.vertical, 4)
+          }
+        }
+        
         Section("Notes") {
           TextField("Add notes...", text: $vm.notes, axis: .vertical)
             .lineLimit(3...6)
