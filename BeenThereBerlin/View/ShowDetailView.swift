@@ -55,6 +55,12 @@ struct ShowDetailView: View {
               Text(show.setlist[index])
             }
           }
+          .onDelete { indexSet in
+            show.setlist.remove(atOffsets: indexSet)
+          }
+          .onMove { source, destination in
+            show.setlist.move(fromOffsets: source, toOffset: destination)
+          }
         }
       }
     }
