@@ -40,6 +40,23 @@ struct ShowDetailView: View {
             .foregroundStyle(.secondary)
         }
       }
+      
+      Section("Setlist") {
+        if show.setlist.isEmpty {
+          Text("No Songs Added")
+            .foregroundStyle(.secondary)
+        } else {
+          ForEach(show.setlist.indices, id: \.self) { index in
+            
+            HStack {
+              Text("\(index + 1)")
+                .foregroundStyle(.secondary)
+                .frame(width: 28, alignment: .leading)
+              Text(show.setlist[index])
+            }
+          }
+        }
+      }
     }
   }
 }
