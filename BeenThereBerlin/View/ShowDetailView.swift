@@ -62,6 +62,17 @@ struct ShowDetailView: View {
             show.setlist.move(fromOffsets: source, toOffset: destination)
           }
         }
+        HStack {
+          TextField("Add song", text: $newSetlistEntry)
+          Button("Add") {
+            let trimmed = newSetlistEntry
+              .trimmingCharacters(in: .whitespaces)
+            guard !trimmed.isEmpty else { return }
+            show.setlist.append(trimmed)
+            newSetlistEntry = ""
+          }
+          .disabled(newSetlistEntry)
+        }
       }
     }
   }
