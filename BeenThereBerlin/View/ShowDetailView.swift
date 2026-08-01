@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ShowDetailView: View {
   @Bindable var show: Show
@@ -90,6 +91,17 @@ struct ShowDetailView: View {
         }
       }
     }
-    .sheet(isPresented: $showingEditSheet) {}
+    .sheet(isPresented: $showingEditSheet) {
+      AddEditShowView(show: show)
+    }
+    .alert("Delete Show?", isPresented: $showingDeleteAlert) {
+      Button("Delete", role: .destructive) {
+        modelContext.delete(show)
+        dismiss()
+      }
+      Button("Cancel", role: .cancel) {}
+    } message: {
+      Text("This will permanently remove \(show.artistName) from your history")
+    }
   }
 }
