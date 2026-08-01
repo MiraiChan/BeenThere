@@ -71,9 +71,25 @@ struct ShowDetailView: View {
             show.setlist.append(trimmed)
             newSetlistEntry = ""
           }
-          .disabled(newSetlistEntry)
+          .disabled(newSetlistEntry.trimmingCharacters(in: .whitespaces).isEmpty)
         }
       }
     }
+    .toolbar {
+      ToolbarItem(placement: .primaryAction) {
+        Menu {
+          Button("Edit Show") {
+            showingEditSheet = true
+          }
+          Divider()
+          Button("Delete Show", role: .destructive) {
+            showingDeleteAlert = true
+          }
+        } label: {
+          Image(systemName: "ellipsis.circle")
+        }
+      }
+    }
+    .sheet(isPresented: $showingEditSheet) {}
   }
 }
