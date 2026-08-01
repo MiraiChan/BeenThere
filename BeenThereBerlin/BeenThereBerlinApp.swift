@@ -10,10 +10,16 @@ import SwiftData
 
 @main
 struct BeenThereBerlinApp: App {
-    var body: some Scene {
-        WindowGroup {
-            MainTabView()
-        }
-        .modelContainer(for: Show.self)
+  
+  @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
+  var body: some Scene {
+    WindowGroup {
+      if {
+        MainTabView()
+      } else {
+        OnboardingView()
+      }
     }
+    .modelContainer(for: Show.self)
+  }
 }
