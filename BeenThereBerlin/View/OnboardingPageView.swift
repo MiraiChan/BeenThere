@@ -30,5 +30,6 @@ struct OnboardingPageView: View {
       Spacer()
       Spacer()
     }
+    padding()
   }
 }
