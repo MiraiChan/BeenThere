@@ -39,11 +39,24 @@ struct OnboardingView: View {
           OnboardingPageView()
             .tag(index)
         }
+        
         OnboardingNotificationsPage(notificationsRequested: $notificationsRequested)
           .tag(pages.count)
       }
       .tabViewStyle(.page(indexDisplayMode: .always))
       .animation(.easeInOut, value: currentPage)
+      
+      Button(action: advance) {
+        Text(isLastPage ? "Let's go!" : "Continue")
+          .font(.headline)
+          .frame(maxWidth: .infinity)
+          .padding()
+          .background(Color.accentColor)
+          .foregroundStyle(.white)
+          .clipShape(RoundedRectangle(cornerRadius: 16))
+      }
+      .padding(.horizontal)
+      .padding(.bottom, 32)
     }
   }
 }
