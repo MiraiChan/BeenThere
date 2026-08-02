@@ -32,7 +32,19 @@ struct OnboardingView: View {
   }
   
   var body: some View {
-    
+    VStack {
+      TabView(selection: $currentPage) {
+        ForEach(pages.indices, id: \.self) { index in
+          
+          OnboardingPageView()
+            .tag(index)
+        }
+        OnboardingNotificationsPage(notificationsRequested: $notificationsRequested)
+          .tag(pages.count)
+      }
+      .tabViewStyle(.page(indexDisplayMode: .always))
+      .animation(.easeInOut, value: currentPage)
+    }
   }
 }
 
