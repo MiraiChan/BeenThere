@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 struct OnboardingNotificationsPage: View {
   @Binding var notificationsRequested: Bool
@@ -26,8 +27,25 @@ struct OnboardingNotificationsPage: View {
         .foregroundStyle(.secondary)
         .multilineTextAlignment(.center)
       
+      if notificationsRequested {
+        Label("You're all set!", systemImage: "checkmark.circle.fill")
+          .foregroundStyle(.green)
+          .font(.headline)
+      } else {
+        Button("Enable Notifications") {
+          UNUserNotificationCenter
+            .current()
+            .requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
+              DispatchQueue.main.async {
+                notificationsRequested = true
+              }
+            }
+        }
+        .buttonStyle(.borderedProminent)
+      }
       Spacer()
       Spacer()
     }
+    .padding()
   }
 }
