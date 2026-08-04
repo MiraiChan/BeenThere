@@ -20,4 +20,9 @@ final class SettingsViewModel {
   func upcomingCount(_ shows: [Show]) -> Int {
     shows.filter { $0.status == .upcoming }.count
   }
+  
+  func seenThisYear(_ shows: [Show]) -> Int {
+    let year = Calendar.current.component(.year, from: .now)
+    return shows.filter { $0.status == .attended && Calendar.current.component(.year, from: $0.date) == year }.count
+  }
 }
