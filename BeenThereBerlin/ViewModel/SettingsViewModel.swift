@@ -25,4 +25,11 @@ final class SettingsViewModel {
     let year = Calendar.current.component(.year, from: .now)
     return shows.filter { $0.status == .attended && Calendar.current.component(.year, from: $0.date) == year }.count
   }
+  
+  func topArtist(_ shows: [Show]) -> String? {
+    let attended = shows.filter { $0.status == .attended }
+    let counts = Dictionary(grouping: attended, by: \.artistName)
+      .mapValues(\.count)
+    return counts.max { $0.value < $1.value }?.key
+  }
 }
