@@ -28,7 +28,12 @@ struct SettingsView: View {
         }
         
         Section("App") {
+          LabeledContent("Version", value: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0")
         }
+      }
+      .navigationTitle("Settings")
+      .onAppear {
+        viewModel.checkNotificationStatus()
       }
     }
   }
