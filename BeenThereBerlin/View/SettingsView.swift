@@ -6,13 +6,34 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SettingsView: View {
-    var body: some View {
-        Text("SettingsView")
+  @Query private var allShows: [Show]
+  @State private var viewModel = SettingsViewModel()
+  
+  var body: some View {
+    NavigationStack {
+      Form{
+        Section("Your Stats") {
+          //stats rows
+        }
+        
+        Section("Notifications") {
+          //reminders toggle
+        }
+        
+        Section("Your Data") {
+          //share link
+        }
+        
+        Section("App") {
+        }
+      }
     }
+  }
 }
 
 #Preview {
-    SettingsView()
+  SettingsView()
 }
