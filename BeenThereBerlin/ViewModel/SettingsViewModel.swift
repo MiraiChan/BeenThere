@@ -32,4 +32,17 @@ final class SettingsViewModel {
       .mapValues(\.count)
     return counts.max { $0.value < $1.value }?.key
   }
+  
+  func exportText(_ shows: [Show]) -> String {
+    let attended = shows
+      .filter { $0.status == .attended }
+      .sorted { $0.date > $1.date }
+    guard !attended.isEmpty else { return "No Shows Logged" }
+    
+    let lines = attended.map { show in
+      let date = show.date.formatted(.dateTime.day().month().year())
+      return "\(date) - \(show.artistName) at \(show.venueName), \(show.location)"
+    }
+    return "My BeenThereBerlin Event History\n\n" + lines.joined(separator: "\n")
+  }
 }
