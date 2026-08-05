@@ -53,4 +53,12 @@ final class SettingsViewModel {
       }
     }
   }
+  
+  func checkNotificationStatus() {
+    UNUserNotificationCenter.current().getNotificationSettings { settings in
+      DispatchQueue.main.async {
+        self.notificationsEnabled = settings.authorizationStatus == .authorized
+      }
+    }
+  }
 }
