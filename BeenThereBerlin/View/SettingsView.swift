@@ -28,7 +28,10 @@ struct SettingsView: View {
         }
         
         Section("Your Data") {
-          //share link
+          ShareLink(item: viewModel.exportText(allShows)) {
+            Label("Export History", systemImage: "square.and.arrow.up")
+          }
+          .disabled(allShows.isEmpty)
         }
         
         Section("App") {
