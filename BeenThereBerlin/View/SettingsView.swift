@@ -16,7 +16,11 @@ struct SettingsView: View {
     NavigationStack {
       Form{
         Section("Your Stats") {
-          //stats rows
+          LabeledContent("Shows Attended", value: "\(viewModel.attendedCount(allShows))")
+          LabeledContent("Upcoming", value: "\(viewModel.upcomingCount(allShows))")
+          LabeledContent("Seen this year", value: "\(viewModel.seenThisYear(allShows))")
+          if let topArtist = viewModel.topArtist(allShows)
+              LabeledContent("Most Seen Artist", value: topArtist)
         }
         
         Section("Notifications") {
