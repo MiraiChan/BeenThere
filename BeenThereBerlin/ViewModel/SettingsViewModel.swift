@@ -45,4 +45,12 @@ final class SettingsViewModel {
     }
     return "My BeenThereBerlin Event History\n\n" + lines.joined(separator: "\n")
   }
+  
+  func requestNotificationPermission() {
+    UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound, .badge]) { granted, _ in
+      DispatchQueue.main.async {
+        self.notificationsEnabled = granted
+      }
+    }
+  }
 }
