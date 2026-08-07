@@ -28,7 +28,12 @@ struct ShowDetailView: View {
       
       if show.status == .attended {
         Section("Rating") {
-          StarRatingView(rating: Binding(get: { show.rating ?? 0 }, set: {show.rating = $0 > 0 ? $0 : nil}))
+          StarRatingView(
+            rating: Binding(
+              get: { show.rating ?? 0 },
+              set: { show.rating = $0 > 0 ? $0 : nil }
+            )
+          )
         }
       }
       

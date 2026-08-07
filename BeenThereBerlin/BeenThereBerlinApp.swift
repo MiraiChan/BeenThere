@@ -14,7 +14,7 @@ struct BeenThereBerlinApp: App {
   @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
   var body: some Scene {
     WindowGroup {
-      if {
+      if hasCompletedOnboarding {
         MainTabView()
       } else {
         OnboardingView()
