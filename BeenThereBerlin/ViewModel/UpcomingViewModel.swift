@@ -11,21 +11,21 @@ import SwiftData
 @Observable
 final class UpcomingViewModel {
   var showingAddSheet = false
-  var showToMarkAttended: Show?
+  var showToMarkAttended: FamilyPlace?
   var pendingRating = 0
   
-  func filteredShows(_ shows: [Show]) -> [Show] {
-    shows
-      .filter { $0.status == .upcoming }
+  func filteredShows(_ places: [FamilyPlace]) -> [FamilyPlace] {
+    places
+      .filter { $0.status == .wishlist }
       .sorted { $0.date < $1.date }
   }
-  func delete(_ show: Show, context: ModelContext) {
-    context.delete(show)
+  func delete(_ place: FamilyPlace, context: ModelContext) {
+    context.delete(place)
   }
   
-  func markAsAttended(_ show: Show) {
-    show.status = .attended
-    show.rating = pendingRating > 0 ? pendingRating : nil
+  func markAsAttended(_ place: FamilyPlace) {
+    place.status = .visited
+    place.rating = pendingRating > 0 ? pendingRating : nil
     pendingRating = 0
     showToMarkAttended = nil
   }

@@ -7,25 +7,25 @@
 import SwiftUI
 
 struct ShowRowView: View {
-  let show: Show
+  let place: FamilyPlace
   var body: some View {
     VStack(alignment: .leading, spacing: 4) {
-      Text(show.artistName)
+      Text(place.placeName)
         .font(.headline)
       
       HStack(spacing: 4) {
-        Text(show.venueName)
+        Text(place.category)
         Text("-")
-        Text(show.location)
+        Text(place.address)
       }
       .font(.subheadline)
       .foregroundStyle(.secondary)
       
       HStack {
-        Text(show.date.formatted(date: .abbreviated, time: .omitted))
+        Text(place.date.formatted(date: .abbreviated, time: .omitted))
           .font(.caption)
           .foregroundStyle(.secondary)
-        if let rating = show.rating {
+        if let rating = place.rating {
           Spacer()
           HStack(spacing: 2) {
             ForEach(1...5, id:\.self) { star in

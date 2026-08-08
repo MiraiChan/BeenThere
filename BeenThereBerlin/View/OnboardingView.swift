@@ -14,9 +14,9 @@ struct OnboardingView: View {
   @State private var notificationsRequested = false
   
   private let pages: [(icon: String, color: Color, title: String, description: String)] = [
-    ("ticket.fill", .purple, "Your Concert History", "Log every show you've been to. Build a record of your live music journey"),
-    ("music.microphone.circle.fill", .pink, "Every Detail Caprured", "Set lists, ratings, notes - everything that made each night unforgettable."),
-    ("calendar", .blue, "Never miss a show", "Save upcoming concerts and keep track of what's on your radar")
+    ("map.fill", .purple, "Your Family Places", "Log every place you've visited. Build a record of your family's favorite spots."),
+    ("star.circle.fill", .pink, "Every Detail Captured", "Activities, ratings, notes - everything that made each visit unforgettable."),
+    ("calendar", .blue, "Never miss a place", "Save upcoming places and keep track of what's on your radar.")
   ]
   
   private var isLastPage: Bool {

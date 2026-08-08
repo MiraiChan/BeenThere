@@ -9,10 +9,10 @@ import SwiftUI
 struct MainTabView: View {
   var body: some View {
     TabView {
-      Tab("Attended", systemImage: "figure.walk") {
+      Tab("Visited", systemImage: "figure.walk") {
         AttendedView()
       }
-      Tab("Upcoming", systemImage: "calendar") {
+      Tab("Wishlist", systemImage: "star") {
         UpcomingView()
       }
       Tab("Settings", systemImage: "gear") {

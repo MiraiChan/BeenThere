@@ -13,37 +13,37 @@ import Foundation
 final class SettingsViewModel {
   var notificationsEnabled = false
   
-  func attendedCount(_ shows: [Show]) -> Int {
-    shows.filter { $0.status == .attended }.count
+  func attendedCount(_ places: [FamilyPlace]) -> Int {
+    places.filter { $0.status == .visited }.count
   }
   
-  func upcomingCount(_ shows: [Show]) -> Int {
-    shows.filter { $0.status == .upcoming }.count
+  func upcomingCount(_ places: [FamilyPlace]) -> Int {
+    places.filter { $0.status == .wishlist }.count
   }
   
-  func seenThisYear(_ shows: [Show]) -> Int {
+  func seenThisYear(_ places: [FamilyPlace]) -> Int {
     let year = Calendar.current.component(.year, from: .now)
-    return shows.filter { $0.status == .attended && Calendar.current.component(.year, from: $0.date) == year }.count
+    return places.filter { $0.status == .visited && Calendar.current.component(.year, from: $0.date) == year }.count
   }
   
-  func topArtist(_ shows: [Show]) -> String? {
-    let attended = shows.filter { $0.status == .attended }
-    let counts = Dictionary(grouping: attended, by: \.artistName)
+  func topArtist(_ places: [FamilyPlace]) -> String? {
+    let attended = places.filter { $0.status == .visited }
+    let counts = Dictionary(grouping: attended, by: \.category)
       .mapValues(\.count)
     return counts.max { $0.value < $1.value }?.key
   }
   
-  func exportText(_ shows: [Show]) -> String {
-    let attended = shows
-      .filter { $0.status == .attended }
+  func exportText(_ places: [FamilyPlace]) -> String {
+    let attended = places
+      .filter { $0.status == .visited }
       .sorted { $0.date > $1.date }
-    guard !attended.isEmpty else { return "No Shows Logged" }
+    guard !attended.isEmpty else { return "No Places Logged" }
     
-    let lines = attended.map { show in
-      let date = show.date.formatted(.dateTime.day().month().year())
-      return "\(date) - \(show.artistName) at \(show.venueName), \(show.location)"
+    let lines = attended.map { place in
+      let date = place.date.formatted(.dateTime.day().month().year())
+      return "\(date) - \(place.placeName) (\(place.category)), \(place.address)"
     }
-    return "My BeenThereBerlin Event History\n\n" + lines.joined(separator: "\n")
+    return "My BeenThereBerlin Places History\n\n" + lines.joined(separator: "\n")
   }
   
   func requestNotificationPermission() {

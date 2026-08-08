@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct UpcomingView: View {
-  @Query(sort: \Show.date) private var allShows: [Show]
+  @Query(sort: \FamilyPlace.date) private var allPlaces: [FamilyPlace]
   @Environment(\.modelContext)  private var modelContext
   @State private var viewModel = UpcomingViewModel()
   
@@ -18,17 +18,17 @@ struct UpcomingView: View {
     
     NavigationStack {
       Group{
-        if viewModel.filteredShows(allShows).isEmpty {
-          EmptyStateView(icon: "calendar", title: "Nothing coming up", message: "Save  shows you're planning to attend")
+        if viewModel.filteredShows(allPlaces).isEmpty {
+          EmptyStateView(icon: "calendar", title: "Nothing coming up", message: "Save places you're planning to visit")
         } else {
           List {
-            ForEach(viewModel.filteredShows(allShows)) { show in
-              NavigationLink(value: show) {
-                ShowRowView(show: show)
+            ForEach(viewModel.filteredShows(allPlaces)) { place in
+              NavigationLink(value: place) {
+                ShowRowView(place: place)
               }
               .swipeActions(edge: .leading) {
-                Button("Attend") {
-                  viewModel.showToMarkAttended = show
+                Button("Visited") {
+                  viewModel.showToMarkAttended = place
                 }
                 .tint(.green)
               }
@@ -36,31 +36,31 @@ struct UpcomingView: View {
             .onDelete {
               indexSet in
               
-              let shows = viewModel.filteredShows(allShows)
+              let places = viewModel.filteredShows(allPlaces)
               for index in indexSet {
-                viewModel.delete(shows[index], context: modelContext)
+                viewModel.delete(places[index], context: modelContext)
               }
             }
           }
         }
       }
-      .navigationTitle("Upcoming")
-      .navigationDestination(for: Show.self) { show in
-        ShowDetailView(show: show)
+      .navigationTitle("Wishlist")
+      .navigationDestination(for: FamilyPlace.self) { place in
+        ShowDetailView(place: place)
       }
       .toolbar {
         ToolbarItem(placement: .primaryAction) {
-          Button("Add Show", systemImage: "plus") {
+          Button("Add Place", systemImage: "plus") {
             viewModel.showingAddSheet = true
           }
         }
       }
       .sheet(isPresented: $vm.showingAddSheet) {
-        AddEditShowView(initialStatus: .upcoming)
+        AddEditShowView(initialStatus: .wishlist)
       }
       .sheet(item: $vm.showToMarkAttended) {
-        show in
-        MarkAttendedSheet(show: show, viewModel: viewModel)
+        place in
+        MarkAttendedSheet(place: place, viewModel: viewModel)
       }
     }
   }

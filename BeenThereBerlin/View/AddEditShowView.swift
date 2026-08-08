@@ -13,31 +13,31 @@ struct AddEditShowView: View {
   @Environment(\.dismiss) private var dismiss
   @State private var viewModel: AddEditShowViewModel
   
-  let existingShow: Show?
+  let existingPlace: FamilyPlace?
   
-  init(show: Show? = nil, initialStatus: ShowStatus = .upcoming) {
-    self.existingShow = show
-    self._viewModel = State(initialValue: AddEditShowViewModel(show: show, initialStatus: initialStatus))
+  init(place: FamilyPlace? = nil, initialStatus: VisitStatus = .wishlist) {
+    self.existingPlace = place
+    self._viewModel = State(initialValue: AddEditShowViewModel(place: place, initialStatus: initialStatus))
   }
   var body: some View {
     @Bindable var vm = viewModel
     
     NavigationStack {
       Form {
-        Section("Show Info") {
-          TextField("Artist", text: $vm.artistName)
-          TextField("Venue", text: $vm.venueName)
-          TextField("Location", text: $vm.location)
+        Section("Place Info") {
+          TextField("Name", text: $vm.placeName)
+          TextField("Category", text: $vm.category)
+          TextField("Address", text: $vm.address)
           DatePicker("Date", selection: $vm.date, displayedComponents: .date)
           Picker("Status", selection: $vm.status) {
-            ForEach(ShowStatus.allCases, id:\.self) { status in
+            ForEach(VisitStatus.allCases, id:\.self) { status in
               Text(status.rawValue.capitalized)
                 .tag(status)
             }
           }
         }
         
-        if viewModel.status == .attended {
+        if viewModel.status == .visited {
           Section("Rating") {
             StarRatingView(rating: $vm.rating)
               .padding(.vertical, 4)
@@ -49,31 +49,31 @@ struct AddEditShowView: View {
             .lineLimit(3...6)
         }
         
-        Section("Setlist") {
-          ForEach(viewModel.setlist.indices, id: \.self) { index in
+        Section("Activities") {
+          ForEach(viewModel.activities.indices, id: \.self) { index in
             HStack {
               Text("\(index + 1)")
                 .foregroundStyle(.secondary)
                 .frame(width: 28, alignment: .leading)
-              Text(viewModel.setlist[index])
+              Text(viewModel.activities[index])
             }
           }
           .onDelete {
-            viewModel.setlist.remove(atOffsets: $0)
+            viewModel.activities.remove(atOffsets: $0)
           }
           .onMove {
-            viewModel.setlist.move(fromOffsets: $0, toOffset: $1)
+            viewModel.activities.move(fromOffsets: $0, toOffset: $1)
           }
           
-          TextField("Add Song" , text: $vm.newSetlistEntry)
+          TextField("Add Activity" , text: $vm.newActivityEntry)
           Button("Add") {
             viewModel.addSetlistEntry()
           }
-          .disabled(viewModel.newSetlistEntry
+          .disabled(viewModel.newActivityEntry
             .trimmingCharacters(in: .whitespaces).isEmpty)
         }
       }
-      .navigationTitle(existingShow == nil ? "Add Show" : "Edit Show")
+      .navigationTitle(existingPlace == nil ? "Add Place" : "Edit Place")
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         ToolbarItem(placement: .cancellationAction) {
@@ -81,7 +81,7 @@ struct AddEditShowView: View {
         }
         ToolbarItem(placement: .confirmationAction) {
           Button("Save") {
-            viewModel.save(to: modelContext, existing: existingShow)
+            viewModel.save(to: modelContext, existing: existingPlace)
             dismiss()
           }
           .disabled(!viewModel.isValid)

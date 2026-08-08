@@ -20,6 +20,6 @@ struct BeenThereBerlinApp: App {
         OnboardingView()
       }
     }
-    .modelContainer(for: Show.self)
+    .modelContainer(for: FamilyPlace.self)
   }
 }

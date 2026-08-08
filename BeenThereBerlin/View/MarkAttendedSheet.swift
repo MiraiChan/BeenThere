@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct MarkAttendedSheet: View {
-  let show: Show
+  let place: FamilyPlace
   @Bindable var viewModel: UpcomingViewModel
   @Environment(\.dismiss) private var dismiss
   var body: some View {
     NavigationStack {
       VStack(spacing: 24) {
-        Text("How was \(show.artistName)?")
+        Text("How was \(place.placeName)?")
           .font(.title2)
           .bold()
           .multilineTextAlignment(.center)
@@ -29,7 +29,7 @@ struct MarkAttendedSheet: View {
         Spacer()
       }
       .padding()
-      .navigationTitle("Mark as Attended")
+      .navigationTitle("Mark as Visited")
       .navigationBarTitleDisplayMode(.inline)
       
       .toolbar {
@@ -42,7 +42,7 @@ struct MarkAttendedSheet: View {
         
         ToolbarItem(placement: .confirmationAction) {
           Button("Done") {
-            viewModel.markAsAttended(show)
+            viewModel.markAsAttended(place)
             dismiss()
           }
         }

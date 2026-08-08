@@ -8,49 +8,45 @@ import Foundation
 import SwiftData
 import SwiftUI
 
-//Codable → can be saved to the database
-//CaseIterable → you can list all cases (for example, for Picker)
-enum ShowStatus: String, Codable, CaseIterable { //rename to ExperienceStatus
-  case attended
-  case upcoming
+enum VisitStatus: String, Codable, CaseIterable {
+  case visited
+  case wishlist
 }
 
 @Model
-final class Show {
-  var artistName: String
-  var venueName: String
-  var location: String
+final class FamilyPlace {
+  var placeName: String
+  var category: String
+  var address: String
   var date: Date
-  var status: ShowStatus
+  var status: VisitStatus
   
   var rating: Int?
   var notes: String?
-  var setlist: [String]
+  var activities: [String]
   var createdAt: Date
   
-  init(artistName: String, venueName: String, location: String, date: Date, status: ShowStatus) {
-    self.artistName = artistName
-    self.venueName = venueName
-    self.location = location
+  var latitude: Double?
+  var longitude: Double?
+  var websiteURL: URL?
+  
+  init(placeName: String, category: String, address: String, date: Date, status: VisitStatus) {
+    self.placeName = placeName
+    self.category = category
+    self.address = address
     self.date = date
     self.status = status
     self.rating = nil
     self.notes = nil
-    self.setlist = []
+    self.activities = []
     self.createdAt = .now
   }
 }
 
 #Preview {
-  //Creating a temporary database (in-memory)
   let config = ModelConfiguration(isStoredInMemoryOnly: true)
-  //Creating a SwiftData container, launching
-  let container = try! ModelContainer(for: Show.self, configurations: config)
-  //Creating test data
-  let sample = Show(artistName: "MGK", venueName: "Coke Arena", location: "Toronto", date: .now, status: .attended)
-  //this object must exist in the database
+  let container = try! ModelContainer(for: FamilyPlace.self, configurations: config)
+  let sample = FamilyPlace(placeName: "Tierpark", category: "Zoo", address: "Am Tierpark 125", date: .now, status: .visited)
   container.mainContext.insert(sample)
-  //Text(sample.artistName) → The UI you see in Preview
-  //.modelContainer(container) → connects SwiftData to this UI
-  return Text(sample.artistName).modelContainer(container)
+  return Text(sample.placeName).modelContainer(container)
 }

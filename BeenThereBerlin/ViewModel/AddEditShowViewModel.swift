@@ -10,59 +10,59 @@ import SwiftData
 
 @Observable
 final class AddEditShowViewModel {
-  var artistName = ""
-  var venueName = ""
-  var location = ""
+  var placeName = ""
+  var category = ""
+  var address = ""
   var date = Date()
-  var status: ShowStatus = .upcoming
+  var status: VisitStatus = .wishlist
   var rating: Int = 0
   var notes = ""
-  var setlist: [String] = []
-  var newSetlistEntry = ""
+  var activities: [String] = []
+  var newActivityEntry = ""
   
   var isValid: Bool {
-    !artistName.trimmingCharacters(in: .whitespaces).isEmpty && !venueName.trimmingCharacters(in: .whitespaces).isEmpty
+    !placeName.trimmingCharacters(in: .whitespaces).isEmpty && !category.trimmingCharacters(in: .whitespaces).isEmpty
   }
   
-  init(show: Show? = nil, initialStatus: ShowStatus = .upcoming) {
-    if let show {
-      artistName = show.artistName
-      venueName = show.venueName
-      location = show.location
-      date = show.date
-      status = show.status
-      rating = show.rating ?? 0
-      notes = show.notes ?? ""
-      setlist = show.setlist
+  init(place: FamilyPlace? = nil, initialStatus: VisitStatus = .wishlist) {
+    if let place {
+      placeName = place.placeName
+      category = place.category
+      address = place.address
+      date = place.date
+      status = place.status
+      rating = place.rating ?? 0
+      notes = place.notes ?? ""
+      activities = place.activities
     } else {
       status = initialStatus
-      date = initialStatus == .attended ? .now : Calendar.current.date(byAdding: .day, value: 7, to: .now) ?? .now
+      date = initialStatus == .visited ? .now : Calendar.current.date(byAdding: .day, value: 7, to: .now) ?? .now
     }
   }
   
   func addSetlistEntry() {
-    let trimmed = newSetlistEntry.trimmingCharacters(in: .whitespaces)
+    let trimmed = newActivityEntry.trimmingCharacters(in: .whitespaces)
     guard !trimmed.isEmpty else { return }
-    setlist.append(trimmed)
-    newSetlistEntry = ""
+    activities.append(trimmed)
+    newActivityEntry = ""
   }
   
-  func save(to context: ModelContext, existing show: Show? = nil) {
-    if let show {
-      show.artistName = artistName
-      show.venueName = venueName
-      show.location = location
-      show.date = date
-      show.status = status
-      show.rating = rating > 0 ? rating : nil
-      show.notes = notes.isEmpty ? nil : notes
-      show.setlist = setlist
+  func save(to context: ModelContext, existing place: FamilyPlace? = nil) {
+    if let place {
+      place.placeName = placeName
+      place.category = category
+      place.address = address
+      place.date = date
+      place.status = status
+      place.rating = rating > 0 ? rating : nil
+      place.notes = notes.isEmpty ? nil : notes
+      place.activities = activities
     } else {
-      let newShow = Show(artistName: artistName, venueName: venueName, location: location, date: date, status: status)
-      newShow.rating = rating > 0 ? rating : nil
-      newShow.notes = notes.isEmpty ? nil : notes
-      newShow.setlist = setlist
-      context.insert(newShow)
+      let newPlace = FamilyPlace(placeName: placeName, category: category, address: address, date: date, status: status)
+      newPlace.rating = rating > 0 ? rating : nil
+      newPlace.notes = notes.isEmpty ? nil : notes
+      newPlace.activities = activities
+      context.insert(newPlace)
     }
   }
 }

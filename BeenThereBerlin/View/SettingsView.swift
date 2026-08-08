@@ -9,18 +9,18 @@ import SwiftUI
 import SwiftData
 
 struct SettingsView: View {
-  @Query private var allShows: [Show]
+  @Query private var allPlaces: [FamilyPlace]
   @State private var viewModel = SettingsViewModel()
   
   var body: some View {
     NavigationStack {
       Form{
         Section("Your Stats") {
-          LabeledContent("Shows Attended", value: "\(viewModel.attendedCount(allShows))")
-          LabeledContent("Upcoming", value: "\(viewModel.upcomingCount(allShows))")
-          LabeledContent("Seen this year", value: "\(viewModel.seenThisYear(allShows))")
-          if let topArtist = viewModel.topArtist(allShows) {
-            LabeledContent("Most Seen Artist", value: topArtist)
+          LabeledContent("Places Visited", value: "\(viewModel.attendedCount(allPlaces))")
+          LabeledContent("Wishlist", value: "\(viewModel.upcomingCount(allPlaces))")
+          LabeledContent("Visited this year", value: "\(viewModel.seenThisYear(allPlaces))")
+          if let topArtist = viewModel.topArtist(allPlaces) {
+            LabeledContent("Top Category", value: topArtist)
           }
         }
           
@@ -39,10 +39,10 @@ struct SettingsView: View {
           }
           
           Section("Your Data") {
-            ShareLink(item: viewModel.exportText(allShows)) {
+            ShareLink(item: viewModel.exportText(allPlaces)) {
               Label("Export History", systemImage: "square.and.arrow.up")
             }
-            .disabled(allShows.isEmpty)
+            .disabled(allPlaces.isEmpty)
           }
           
           Section("App") {

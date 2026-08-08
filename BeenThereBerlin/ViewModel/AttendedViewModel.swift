@@ -13,17 +13,17 @@ final class AttendedViewModel {
   var searchText = ""
   var showingAddSheet = false
   
-  func filteredShows(_ shows: [Show]) -> [Show] {
-    let attended = shows.filter({ $0.status == .attended })
+  func filteredShows(_ places: [FamilyPlace]) -> [FamilyPlace] {
+    let attended = places.filter({ $0.status == .visited })
     guard !searchText.isEmpty else { return attended }
     return attended.filter {
-      $0.artistName.localizedCaseInsensitiveContains(searchText) ||
-      $0.venueName.localizedCaseInsensitiveContains(searchText) ||
-      $0.location.localizedCaseInsensitiveContains(searchText)
+      $0.placeName.localizedCaseInsensitiveContains(searchText) ||
+      $0.category.localizedCaseInsensitiveContains(searchText) ||
+      $0.address.localizedCaseInsensitiveContains(searchText)
     }
   }
   
-  func delete(_ show: Show, context: ModelContext) {
-    context.delete(show)
+  func delete(_ place: FamilyPlace, context: ModelContext) {
+    context.delete(place)
   }
 }

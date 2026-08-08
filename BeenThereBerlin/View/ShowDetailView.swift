@@ -9,36 +9,36 @@ import SwiftUI
 import SwiftData
 
 struct ShowDetailView: View {
-  @Bindable var show: Show
+  @Bindable var place: FamilyPlace
   @Environment(\.modelContext) private var modelContext
   @Environment(\.dismiss) private var dismiss
   @State private var showingEditSheet = false
   @State private var showingDeleteAlert = false
-  @State private var newSetlistEntry = ""
+  @State private var newActivityEntry = ""
   
   var body: some View {
     List {
-      Section("Show Info") {
-        LabeledContent("Artist", value: show.artistName)
-        LabeledContent("Venue", value: show.venueName)
-        LabeledContent("Location", value: show.location)
-        LabeledContent("Date", value: show.date.formatted(date: .long, time: .omitted))
-        LabeledContent("Status", value: show.status.rawValue.capitalized)
+      Section("Place Info") {
+        LabeledContent("Name", value: place.placeName)
+        LabeledContent("Category", value: place.category)
+        LabeledContent("Address", value: place.address)
+        LabeledContent("Date", value: place.date.formatted(date: .long, time: .omitted))
+        LabeledContent("Status", value: place.status.rawValue.capitalized)
       }
       
-      if show.status == .attended {
+      if place.status == .visited {
         Section("Rating") {
           StarRatingView(
             rating: Binding(
-              get: { show.rating ?? 0 },
-              set: { show.rating = $0 > 0 ? $0 : nil }
+              get: { place.rating ?? 0 },
+              set: { place.rating = $0 > 0 ? $0 : nil }
             )
           )
         }
       }
       
       Section("Notes") {
-        if let notes = show.notes,
+        if let notes = place.notes,
            !notes.isEmpty {
           Text(notes)
         } else {
@@ -47,48 +47,48 @@ struct ShowDetailView: View {
         }
       }
       
-      Section("Setlist") {
-        if show.setlist.isEmpty {
-          Text("No Songs Added")
+      Section("Activities") {
+        if place.activities.isEmpty {
+          Text("No Activities Added")
             .foregroundStyle(.secondary)
         } else {
-          ForEach(show.setlist.indices, id: \.self) { index in
+          ForEach(place.activities.indices, id: \.self) { index in
             
             HStack {
               Text("\(index + 1)")
                 .foregroundStyle(.secondary)
                 .frame(width: 28, alignment: .leading)
-              Text(show.setlist[index])
+              Text(place.activities[index])
             }
           }
           .onDelete { indexSet in
-            show.setlist.remove(atOffsets: indexSet)
+            place.activities.remove(atOffsets: indexSet)
           }
           .onMove { source, destination in
-            show.setlist.move(fromOffsets: source, toOffset: destination)
+            place.activities.move(fromOffsets: source, toOffset: destination)
           }
         }
         HStack {
-          TextField("Add song", text: $newSetlistEntry)
+          TextField("Add activity", text: $newActivityEntry)
           Button("Add") {
-            let trimmed = newSetlistEntry
+            let trimmed = newActivityEntry
               .trimmingCharacters(in: .whitespaces)
             guard !trimmed.isEmpty else { return }
-            show.setlist.append(trimmed)
-            newSetlistEntry = ""
+            place.activities.append(trimmed)
+            newActivityEntry = ""
           }
-          .disabled(newSetlistEntry.trimmingCharacters(in: .whitespaces).isEmpty)
+          .disabled(newActivityEntry.trimmingCharacters(in: .whitespaces).isEmpty)
         }
       }
     }
     .toolbar {
       ToolbarItem(placement: .primaryAction) {
         Menu {
-          Button("Edit Show") {
+          Button("Edit Place") {
             showingEditSheet = true
           }
           Divider()
-          Button("Delete Show", role: .destructive) {
+          Button("Delete Place", role: .destructive) {
             showingDeleteAlert = true
           }
         } label: {
@@ -97,16 +97,16 @@ struct ShowDetailView: View {
       }
     }
     .sheet(isPresented: $showingEditSheet) {
-      AddEditShowView(show: show)
+      AddEditShowView(place: place)
     }
-    .alert("Delete Show?", isPresented: $showingDeleteAlert) {
+    .alert("Delete Place?", isPresented: $showingDeleteAlert) {
       Button("Delete", role: .destructive) {
-        modelContext.delete(show)
+        modelContext.delete(place)
         dismiss()
       }
       Button("Cancel", role: .cancel) {}
     } message: {
-      Text("This will permanently remove \(show.artistName) from your history")
+      Text("This will permanently remove \(place.placeName) from your history")
     }
   }
 }
