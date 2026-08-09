@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import MapKit
 
 struct AddEditShowView: View {
   @Environment(\.modelContext) private var modelContext
@@ -24,6 +25,31 @@ struct AddEditShowView: View {
     
     NavigationStack {
       Form {
+        Section("Find Location") {
+          TextField("Search Apple Maps...", text: Binding(
+            get: { vm.searchQuery },
+            set: { vm.updateSearchQuery($0) }
+          ))
+          
+          if !vm.searchResults.isEmpty {
+            ForEach(vm.searchResults, id: \.self) { result in
+              Button(action: {
+                vm.select(completion: result)
+              }) {
+                VStack(alignment: .leading) {
+                  Text(result.title)
+                    .foregroundStyle(.primary)
+                  if !result.subtitle.isEmpty {
+                    Text(result.subtitle)
+                      .font(.caption)
+                      .foregroundStyle(.secondary)
+                  }
+                }
+              }
+            }
+          }
+        }
+        
         Section("Place Info") {
           TextField("Name", text: $vm.placeName)
           TextField("Category", text: $vm.category)
