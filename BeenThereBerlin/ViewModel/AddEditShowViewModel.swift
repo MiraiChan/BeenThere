@@ -86,8 +86,8 @@ final class AddEditShowViewModel: NSObject, MKLocalSearchCompleterDelegate {
         if let poiCategory = mapItem.pointOfInterestCategory?.rawValue {
           self.category = poiCategory.replacingOccurrences(of: "MKPOICategory", with: "")
         }
-        self.latitude = mapItem.placemark.coordinate.latitude
-        self.longitude = mapItem.placemark.coordinate.longitude
+        self.latitude = mapItem.location.coordinate.latitude
+        self.longitude = mapItem.location.coordinate.longitude
         self.websiteURL = mapItem.url
         self.searchQuery = "" // Hide search results
         self.searchResults = []
