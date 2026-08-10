@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import MapKit
 
 struct ShowDetailView: View {
   @Bindable var place: FamilyPlace
@@ -18,6 +19,16 @@ struct ShowDetailView: View {
   
   var body: some View {
     List {
+      if let lat = place.latitude, let lon = place.longitude {
+        Section {
+          Map(initialPosition: .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: lon), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)))) {
+            Marker(place.placeName, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon))
+          }
+          .frame(height: 200)
+          .listRowInsets(EdgeInsets())
+        }
+      }
+      
       Section("Place Info") {
         LabeledContent("Name", value: place.placeName)
         LabeledContent("Category", value: place.category)
