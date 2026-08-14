@@ -63,13 +63,13 @@ struct ShowDetailView: View {
           Text("No Activities Added")
             .foregroundStyle(.secondary)
         } else {
-          ForEach(place.activities.indices, id: \.self) { index in
+          ForEach(Array(place.activities.enumerated()), id: \.offset) { index, activity in
             
             HStack {
               Text("\(index + 1)")
                 .foregroundStyle(.secondary)
                 .frame(width: 28, alignment: .leading)
-              Text(place.activities[index])
+              Text(activity)
             }
           }
           .onDelete { indexSet in
