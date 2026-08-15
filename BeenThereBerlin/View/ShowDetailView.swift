@@ -15,7 +15,7 @@ struct ShowDetailView: View {
   @Environment(\.dismiss) private var dismiss
   @State private var showingEditSheet = false
   @State private var showingDeleteAlert = false
-  @State private var newActivityEntry = ""
+  @State private var newActivityEntry = AppStrings.empty
   
   var body: some View {
     List {
@@ -86,7 +86,7 @@ struct ShowDetailView: View {
               .trimmingCharacters(in: .whitespaces)
             guard !trimmed.isEmpty else { return }
             place.activities.append(trimmed)
-            newActivityEntry = ""
+            newActivityEntry = AppStrings.empty
           }
           .disabled(newActivityEntry.trimmingCharacters(in: .whitespaces).isEmpty)
         }
@@ -103,7 +103,7 @@ struct ShowDetailView: View {
             showingDeleteAlert = true
           }
         } label: {
-          Image(systemName: "ellipsis.circle")
+          Image(systemName: AppStrings.Icons.ellipsisCircle)
         }
       }
     }

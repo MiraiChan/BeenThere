@@ -29,7 +29,7 @@ struct ShowRowView: View {
           Spacer()
           HStack(spacing: 2) {
             ForEach(1...5, id:\.self) { star in
-              Image(systemName: star <= rating ? "star.fill" : "star")
+              Image(systemName: star <= rating ? AppStrings.Icons.starFill : AppStrings.Icons.star)
                 .font(.caption2)
                 .foregroundStyle(star <= rating ? Color.yellow : Color.secondary)
             }

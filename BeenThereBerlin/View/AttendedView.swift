@@ -17,7 +17,7 @@ struct AttendedView: View {
     NavigationStack {
       Group {
         if viewModel.filteredShows(allPlaces).isEmpty {
-          EmptyStateView(icon: "map", title: viewModel.searchText.isEmpty ? AppStrings.noPlacesYet : AppStrings.noResults, message: viewModel.searchText.isEmpty ? AppStrings.startLogging : AppStrings.trySearching)
+          EmptyStateView(icon: AppStrings.Icons.map, title: viewModel.searchText.isEmpty ? AppStrings.noPlacesYet : AppStrings.noResults, message: viewModel.searchText.isEmpty ? AppStrings.startLogging : AppStrings.trySearching)
         } else {
           List {
             ForEach(viewModel.filteredShows(allPlaces)) { place in
@@ -41,7 +41,7 @@ struct AttendedView: View {
       }
       .toolbar {
         Button(AppStrings.addPlaceExclamation,
-               systemImage: "plus") {
+               systemImage: AppStrings.Icons.plus) {
           viewModel.showingAddSheet = true
         }
       }

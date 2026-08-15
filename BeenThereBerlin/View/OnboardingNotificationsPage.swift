@@ -15,7 +15,7 @@ struct OnboardingNotificationsPage: View {
     
     VStack(spacing: 24) {
       Spacer()
-      Image(systemName: "bell.circle.fill")
+      Image(systemName: AppStrings.Icons.bellCircleFill)
         .font(.system(size: 90))
         .foregroundStyle(.orange)
       Text(AppStrings.placeReminders)
@@ -28,7 +28,7 @@ struct OnboardingNotificationsPage: View {
         .multilineTextAlignment(.center)
       
       if notificationsRequested {
-        Label(AppStrings.youreAllSet, systemImage: "checkmark.circle.fill")
+        Label(AppStrings.youreAllSet, systemImage: AppStrings.Icons.checkmarkCircleFill)
           .foregroundStyle(.green)
           .font(.headline)
       } else {

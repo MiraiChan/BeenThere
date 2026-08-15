@@ -19,7 +19,7 @@ struct UpcomingView: View {
     NavigationStack {
       Group{
         if viewModel.filteredShows(allPlaces).isEmpty {
-          EmptyStateView(icon: "calendar", title: AppStrings.nothingComingUp, message: AppStrings.savePlacesPlanning)
+          EmptyStateView(icon: AppStrings.Icons.calendar, title: AppStrings.nothingComingUp, message: AppStrings.savePlacesPlanning)
         } else {
           List {
             ForEach(viewModel.filteredShows(allPlaces)) { place in
@@ -50,7 +50,7 @@ struct UpcomingView: View {
       }
       .toolbar {
         ToolbarItem(placement: .primaryAction) {
-          Button(AppStrings.addPlace, systemImage: "plus") {
+          Button(AppStrings.addPlace, systemImage: AppStrings.Icons.plus) {
             viewModel.showingAddSheet = true
           }
         }

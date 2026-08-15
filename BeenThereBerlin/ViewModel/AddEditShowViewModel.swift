@@ -11,22 +11,22 @@ import MapKit
 
 @Observable
 final class AddEditShowViewModel: NSObject, MKLocalSearchCompleterDelegate {
-  var placeName = ""
-  var category = ""
-  var address = ""
+  var placeName = AppStrings.empty
+  var category = AppStrings.empty
+  var address = AppStrings.empty
   var date = Date()
   var status: VisitStatus = .wishlist
   var rating: Int = 0
-  var notes = ""
+  var notes = AppStrings.empty
   var activities: [String] = []
-  var newActivityEntry = ""
+  var newActivityEntry = AppStrings.empty
   
   var latitude: Double?
   var longitude: Double?
   var websiteURL: URL?
   
   // Search properties
-  var searchQuery = ""
+  var searchQuery = AppStrings.empty
   var searchResults: [MKLocalSearchCompletion] = []
   @ObservationIgnored private let completer = MKLocalSearchCompleter()
   
@@ -46,7 +46,7 @@ final class AddEditShowViewModel: NSObject, MKLocalSearchCompleterDelegate {
       date = place.date
       status = place.status
       rating = place.rating ?? 0
-      notes = place.notes ?? ""
+      notes = place.notes ?? AppStrings.empty
       activities = place.activities
       latitude = place.latitude
       longitude = place.longitude
@@ -84,12 +84,12 @@ final class AddEditShowViewModel: NSObject, MKLocalSearchCompleterDelegate {
         self.placeName = mapItem.name ?? completion.title
         self.address = completion.subtitle
         if let poiCategory = mapItem.pointOfInterestCategory?.rawValue {
-          self.category = poiCategory.replacingOccurrences(of: "MKPOICategory", with: "")
+          self.category = poiCategory.replacingOccurrences(of: "MKPOICategory", with: AppStrings.empty)
         }
         self.latitude = mapItem.location.coordinate.latitude
         self.longitude = mapItem.location.coordinate.longitude
         self.websiteURL = mapItem.url
-        self.searchQuery = "" // Hide search results
+        self.searchQuery = AppStrings.empty // Hide search results
         self.searchResults = []
       }
     }
@@ -99,7 +99,7 @@ final class AddEditShowViewModel: NSObject, MKLocalSearchCompleterDelegate {
     let trimmed = newActivityEntry.trimmingCharacters(in: .whitespaces)
     guard !trimmed.isEmpty else { return }
     activities.append(trimmed)
-    newActivityEntry = ""
+    newActivityEntry = AppStrings.empty
   }
   
   func save(to context: ModelContext, existing place: FamilyPlace? = nil) {

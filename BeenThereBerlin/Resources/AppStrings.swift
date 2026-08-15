@@ -94,4 +94,23 @@ public enum AppStrings {
     // SettingsViewModel
     public static let myPlacesHistoryTitle: LocalizedStringResource = "My BeenThereBerlin Places History\n\n"
     public static let noPlacesLogged: LocalizedStringResource = "No Places Logged"
+    // System Images & Icons
+    public enum Icons {
+        public static let ellipsisCircle = "ellipsis.circle"
+        public static let bellCircleFill = "bell.circle.fill"
+        public static let checkmarkCircleFill = "checkmark.circle.fill"
+        public static let figureWalk = "figure.walk"
+        public static let star = "star"
+        public static let gear = "gear"
+        public static let squareAndArrowUp = "square.and.arrow.up"
+        public static let plus = "plus"
+        public static let starFill = "star.fill"
+        public static let map = "map"
+        public static let calendar = "calendar"
+        public static let mapFill = "map.fill"
+        public static let starCircleFill = "star.circle.fill"
+    }
+    
+    // Empty string
+    public static let empty = ""
 }

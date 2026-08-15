@@ -40,7 +40,7 @@ struct SettingsView: View {
           
           Section(AppStrings.yourData) {
             ShareLink(item: viewModel.exportText(allPlaces)) {
-              Label(AppStrings.exportHistory, systemImage: "square.and.arrow.up")
+              Label(AppStrings.exportHistory, systemImage: AppStrings.Icons.squareAndArrowUp)
             }
             .disabled(allPlaces.isEmpty)
           }

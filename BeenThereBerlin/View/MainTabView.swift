@@ -9,13 +9,13 @@ import SwiftUI
 struct MainTabView: View {
   var body: some View {
     TabView {
-      Tab(AppStrings.visited, systemImage: "figure.walk") {
+      Tab(AppStrings.visited, systemImage: AppStrings.Icons.figureWalk) {
         AttendedView()
       }
-      Tab(AppStrings.wishlist, systemImage: "star") {
+      Tab(AppStrings.wishlist, systemImage: AppStrings.Icons.star) {
         UpcomingView()
       }
-      Tab(AppStrings.settings, systemImage: "gear") {
+      Tab(AppStrings.settings, systemImage: AppStrings.Icons.gear) {
         SettingsView()
       }
     }

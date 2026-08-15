@@ -14,9 +14,9 @@ struct OnboardingView: View {
   @State private var notificationsRequested = false
   
   private let pages: [(icon: String, color: Color, title: LocalizedStringResource, description: LocalizedStringResource)] = [
-    ("map.fill", .purple, AppStrings.yourFamilyPlaces, AppStrings.logEveryPlace),
-    ("star.circle.fill", .pink, AppStrings.everyDetailCaptured, AppStrings.activitiesRatingsNotes),
-    ("calendar", .blue, AppStrings.neverMissAPlace, AppStrings.saveUpcomingPlaces)
+    (AppStrings.Icons.mapFill, .purple, AppStrings.yourFamilyPlaces, AppStrings.logEveryPlace),
+    (AppStrings.Icons.starCircleFill, .pink, AppStrings.everyDetailCaptured, AppStrings.activitiesRatingsNotes),
+    (AppStrings.Icons.calendar, .blue, AppStrings.neverMissAPlace, AppStrings.saveUpcomingPlaces)
   ]
   
   private var isLastPage: Bool {

@@ -10,7 +10,7 @@ import SwiftData
 
 @Observable
 final class AttendedViewModel {
-  var searchText = ""
+  var searchText = AppStrings.empty
   var showingAddSheet = false
   
   func filteredShows(_ places: [FamilyPlace]) -> [FamilyPlace] {

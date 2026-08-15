@@ -20,7 +20,7 @@ struct StarRatingView: View {
           }
         }
         label: {
-          Image(systemName: star <= rating ? "star.fill" : "star")
+          Image(systemName: star <= rating ? AppStrings.Icons.starFill : AppStrings.Icons.star)
             .font(.title2)
             .foregroundStyle(star <= rating ? Color.yellow: Color.secondary)
             .scaleEffect(star <= rating ? 1.1 : 1.0)
