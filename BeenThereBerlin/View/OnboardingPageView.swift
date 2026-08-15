@@ -10,8 +10,8 @@ import SwiftUI
 struct OnboardingPageView: View {
   let icon: String
   let color: Color
-  let title: String
-  let description: String
+  let title: LocalizedStringResource
+  let description: LocalizedStringResource
   
   var body: some View {
     VStack(spacing: 24) {

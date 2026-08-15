@@ -15,18 +15,18 @@ struct SettingsView: View {
   var body: some View {
     NavigationStack {
       Form{
-        Section("Your Stats") {
-          LabeledContent("Places Visited", value: "\(viewModel.attendedCount(allPlaces))")
-          LabeledContent("Wishlist", value: "\(viewModel.upcomingCount(allPlaces))")
-          LabeledContent("Visited this year", value: "\(viewModel.seenThisYear(allPlaces))")
+        Section(AppStrings.yourStats) {
+          LabeledContent(AppStrings.placesVisited, value: "\(viewModel.attendedCount(allPlaces))")
+          LabeledContent(AppStrings.wishlist, value: "\(viewModel.upcomingCount(allPlaces))")
+          LabeledContent(AppStrings.visitedThisYear, value: "\(viewModel.seenThisYear(allPlaces))")
           if let topArtist = viewModel.topArtist(allPlaces) {
-            LabeledContent("Top Category", value: topArtist)
+            LabeledContent(AppStrings.topCategory, value: topArtist)
           }
         }
           
-          Section("Notifications") {
+          Section(AppStrings.notifications) {
             Toggle(
-              "Show Reminders",
+              AppStrings.showReminders,
               isOn: Binding(
                 get: { viewModel.notificationsEnabled },
                 set: { enabled in
@@ -38,18 +38,18 @@ struct SettingsView: View {
             )
           }
           
-          Section("Your Data") {
+          Section(AppStrings.yourData) {
             ShareLink(item: viewModel.exportText(allPlaces)) {
-              Label("Export History", systemImage: "square.and.arrow.up")
+              Label(AppStrings.exportHistory, systemImage: "square.and.arrow.up")
             }
             .disabled(allPlaces.isEmpty)
           }
           
-          Section("App") {
-            LabeledContent("Version", value: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0")
+          Section(AppStrings.app) {
+            LabeledContent(AppStrings.version, value: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0")
           }
         }
-        .navigationTitle("Settings")
+        .navigationTitle(AppStrings.settings)
         .onAppear {
           viewModel.checkNotificationStatus()
         }

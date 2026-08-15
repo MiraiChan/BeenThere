@@ -14,7 +14,7 @@ struct MarkAttendedSheet: View {
   var body: some View {
     NavigationStack {
       VStack(spacing: 24) {
-        Text("How was \(place.placeName)?")
+        Text(AppStrings.howWas(place.placeName))
           .font(.title2)
           .bold()
           .multilineTextAlignment(.center)
@@ -23,25 +23,25 @@ struct MarkAttendedSheet: View {
         
         StarRatingView(rating: $viewModel.pendingRating)
         
-        Text("Optional - you can always add rating later")
+        Text(AppStrings.optionalRating)
           .font(.caption)
           .foregroundStyle(.secondary)
         Spacer()
       }
       .padding()
-      .navigationTitle("Mark as Visited")
+      .navigationTitle(AppStrings.markAsVisited)
       .navigationBarTitleDisplayMode(.inline)
       
       .toolbar {
         ToolbarItem(placement: .cancellationAction) {
-          Button("Cancel") {
+          Button(AppStrings.cancel) {
             viewModel.pendingRating = 0
             dismiss()
           }
         }
         
         ToolbarItem(placement: .confirmationAction) {
-          Button("Done") {
+          Button(AppStrings.done) {
             viewModel.markAsAttended(place)
             dismiss()
           }

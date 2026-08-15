@@ -25,8 +25,8 @@ struct AddEditShowView: View {
     
     NavigationStack {
       Form {
-        Section("Find Location") {
-          TextField("Search Apple Maps...", text: Binding(
+        Section(AppStrings.findLocation) {
+          TextField(AppStrings.searchAppleMaps, text: Binding(
             get: { vm.searchQuery },
             set: { vm.updateSearchQuery($0) }
           ))
@@ -50,12 +50,12 @@ struct AddEditShowView: View {
           }
         }
         
-        Section("Place Info") {
-          TextField("Name", text: $vm.placeName)
-          TextField("Category", text: $vm.category)
-          TextField("Address", text: $vm.address)
-          DatePicker("Date", selection: $vm.date, displayedComponents: .date)
-          Picker("Status", selection: $vm.status) {
+        Section(AppStrings.placeInfo) {
+          TextField(AppStrings.name, text: $vm.placeName)
+          TextField(AppStrings.category, text: $vm.category)
+          TextField(AppStrings.address, text: $vm.address)
+          DatePicker(AppStrings.date, selection: $vm.date, displayedComponents: .date)
+          Picker(AppStrings.status, selection: $vm.status) {
             ForEach(VisitStatus.allCases, id:\.self) { status in
               Text(status.rawValue.capitalized)
                 .tag(status)
@@ -64,21 +64,21 @@ struct AddEditShowView: View {
         }
         
         if viewModel.status == .visited {
-          Section("Rating") {
+          Section(AppStrings.rating) {
             StarRatingView(rating: $vm.rating)
               .padding(.vertical, 4)
           }
         }
         
-        Section("Notes") {
-          TextField("Add notes...", text: $vm.notes, axis: .vertical)
+        Section(AppStrings.notes) {
+          TextField(AppStrings.addNotesPlaceholder, text: $vm.notes, axis: .vertical)
             .lineLimit(3...6)
         }
         
-        Section("Activities") {
+        Section(AppStrings.activities) {
           ForEach(viewModel.activities.indices, id: \.self) { index in
             HStack {
-              Text("\(index + 1)")
+              Text(AppStrings.number(index + 1))
                 .foregroundStyle(.secondary)
                 .frame(width: 28, alignment: .leading)
               Text(viewModel.activities[index])
@@ -91,22 +91,22 @@ struct AddEditShowView: View {
             viewModel.activities.move(fromOffsets: $0, toOffset: $1)
           }
           
-          TextField("Add Activity" , text: $vm.newActivityEntry)
-          Button("Add") {
+          TextField(AppStrings.addActivity, text: $vm.newActivityEntry)
+          Button(AppStrings.add) {
             viewModel.addSetlistEntry()
           }
           .disabled(viewModel.newActivityEntry
             .trimmingCharacters(in: .whitespaces).isEmpty)
         }
       }
-      .navigationTitle(existingPlace == nil ? "Add Place" : "Edit Place")
+      .navigationTitle(existingPlace == nil ? AppStrings.addPlace : AppStrings.editPlace)
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         ToolbarItem(placement: .cancellationAction) {
-          Button("Cancel") { dismiss() }
+          Button(AppStrings.cancel) { dismiss() }
         }
         ToolbarItem(placement: .confirmationAction) {
-          Button("Save") {
+          Button(AppStrings.save) {
             viewModel.save(to: modelContext, existing: existingPlace)
             dismiss()
           }

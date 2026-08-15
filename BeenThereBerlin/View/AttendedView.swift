@@ -17,7 +17,7 @@ struct AttendedView: View {
     NavigationStack {
       Group {
         if viewModel.filteredShows(allPlaces).isEmpty {
-          EmptyStateView(icon: "map", title: viewModel.searchText.isEmpty ? "No Places Yet" : "No Results", message: viewModel.searchText.isEmpty ? "Start logging for the places you've been to" : "Try Searching for something else")
+          EmptyStateView(icon: "map", title: viewModel.searchText.isEmpty ? AppStrings.noPlacesYet : AppStrings.noResults, message: viewModel.searchText.isEmpty ? AppStrings.startLogging : AppStrings.trySearching)
         } else {
           List {
             ForEach(viewModel.filteredShows(allPlaces)) { place in
@@ -34,13 +34,13 @@ struct AttendedView: View {
           }
         }
       }
-      .navigationTitle("Visited")
-      .searchable(text: $vm.searchText, prompt: "Places, Categories, Addresses")
+      .navigationTitle(AppStrings.visited)
+      .searchable(text: $vm.searchText, prompt: AppStrings.searchPlaceholder)
       .navigationDestination(for: FamilyPlace.self) { place in
         ShowDetailView(place: place)
       }
       .toolbar {
-        Button("Add place!",
+        Button(AppStrings.addPlaceExclamation,
                systemImage: "plus") {
           viewModel.showingAddSheet = true
         }

@@ -37,13 +37,13 @@ final class SettingsViewModel {
     let attended = places
       .filter { $0.status == .visited }
       .sorted { $0.date > $1.date }
-    guard !attended.isEmpty else { return "No Places Logged" }
+    guard !attended.isEmpty else { return String(localized: AppStrings.noPlacesLogged) }
     
     let lines = attended.map { place in
       let date = place.date.formatted(.dateTime.day().month().year())
       return "\(date) - \(place.placeName) (\(place.category)), \(place.address)"
     }
-    return "My BeenThereBerlin Places History\n\n" + lines.joined(separator: "\n")
+    return String(localized: AppStrings.myPlacesHistoryTitle) + lines.joined(separator: "\n")
   }
   
   func requestNotificationPermission() {

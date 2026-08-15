@@ -19,7 +19,7 @@ struct UpcomingView: View {
     NavigationStack {
       Group{
         if viewModel.filteredShows(allPlaces).isEmpty {
-          EmptyStateView(icon: "calendar", title: "Nothing coming up", message: "Save places you're planning to visit")
+          EmptyStateView(icon: "calendar", title: AppStrings.nothingComingUp, message: AppStrings.savePlacesPlanning)
         } else {
           List {
             ForEach(viewModel.filteredShows(allPlaces)) { place in
@@ -27,7 +27,7 @@ struct UpcomingView: View {
                 ShowRowView(place: place)
               }
               .swipeActions(edge: .leading) {
-                Button("Visited") {
+                Button(AppStrings.visited) {
                   viewModel.showToMarkAttended = place
                 }
                 .tint(.green)
@@ -44,13 +44,13 @@ struct UpcomingView: View {
           }
         }
       }
-      .navigationTitle("Wishlist")
+      .navigationTitle(AppStrings.wishlist)
       .navigationDestination(for: FamilyPlace.self) { place in
         ShowDetailView(place: place)
       }
       .toolbar {
         ToolbarItem(placement: .primaryAction) {
-          Button("Add Place", systemImage: "plus") {
+          Button(AppStrings.addPlace, systemImage: "plus") {
             viewModel.showingAddSheet = true
           }
         }

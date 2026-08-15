@@ -18,21 +18,21 @@ struct OnboardingNotificationsPage: View {
       Image(systemName: "bell.circle.fill")
         .font(.system(size: 90))
         .foregroundStyle(.orange)
-      Text("Place Reminders")
+      Text(AppStrings.placeReminders)
         .font(.largeTitle)
         .bold()
         .multilineTextAlignment(.center)
-      Text("Get notified before upcoming places so you're always ready!")
+      Text(AppStrings.getNotifiedBefore)
         .font(.body)
         .foregroundStyle(.secondary)
         .multilineTextAlignment(.center)
       
       if notificationsRequested {
-        Label("You're all set!", systemImage: "checkmark.circle.fill")
+        Label(AppStrings.youreAllSet, systemImage: "checkmark.circle.fill")
           .foregroundStyle(.green)
           .font(.headline)
       } else {
-        Button("Enable Notifications") {
+        Button(AppStrings.enableNotifications) {
           UNUserNotificationCenter
             .current()
             .requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in

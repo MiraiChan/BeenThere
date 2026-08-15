@@ -29,16 +29,16 @@ struct ShowDetailView: View {
         }
       }
       
-      Section("Place Info") {
-        LabeledContent("Name", value: place.placeName)
-        LabeledContent("Category", value: place.category)
-        LabeledContent("Address", value: place.address)
-        LabeledContent("Date", value: place.date.formatted(date: .long, time: .omitted))
-        LabeledContent("Status", value: place.status.rawValue.capitalized)
+      Section(AppStrings.placeInfo) {
+        LabeledContent(AppStrings.name, value: place.placeName)
+        LabeledContent(AppStrings.category, value: place.category)
+        LabeledContent(AppStrings.address, value: place.address)
+        LabeledContent(AppStrings.date, value: place.date.formatted(date: .long, time: .omitted))
+        LabeledContent(AppStrings.status, value: place.status.rawValue.capitalized)
       }
       
       if place.status == .visited {
-        Section("Rating") {
+        Section(AppStrings.rating) {
           StarRatingView(
             rating: Binding(
               get: { place.rating ?? 0 },
@@ -48,25 +48,25 @@ struct ShowDetailView: View {
         }
       }
       
-      Section("Notes") {
+      Section(AppStrings.notes) {
         if let notes = place.notes,
            !notes.isEmpty {
           Text(notes)
         } else {
-          Text("No notes added!")
+          Text(AppStrings.noNotesAdded)
             .foregroundStyle(.secondary)
         }
       }
       
-      Section("Activities") {
+      Section(AppStrings.activities) {
         if place.activities.isEmpty {
-          Text("No Activities Added")
+          Text(AppStrings.noActivitiesAdded)
             .foregroundStyle(.secondary)
         } else {
           ForEach(Array(place.activities.enumerated()), id: \.offset) { index, activity in
             
             HStack {
-              Text("\(index + 1)")
+              Text(AppStrings.number(index + 1))
                 .foregroundStyle(.secondary)
                 .frame(width: 28, alignment: .leading)
               Text(activity)
@@ -80,8 +80,8 @@ struct ShowDetailView: View {
           }
         }
         HStack {
-          TextField("Add activity", text: $newActivityEntry)
-          Button("Add") {
+          TextField(AppStrings.addActivityLowercase, text: $newActivityEntry)
+          Button(AppStrings.add) {
             let trimmed = newActivityEntry
               .trimmingCharacters(in: .whitespaces)
             guard !trimmed.isEmpty else { return }
@@ -95,11 +95,11 @@ struct ShowDetailView: View {
     .toolbar {
       ToolbarItem(placement: .primaryAction) {
         Menu {
-          Button("Edit Place") {
+          Button(AppStrings.editPlace) {
             showingEditSheet = true
           }
           Divider()
-          Button("Delete Place", role: .destructive) {
+          Button(AppStrings.deletePlaceTitle, role: .destructive) {
             showingDeleteAlert = true
           }
         } label: {
@@ -110,14 +110,14 @@ struct ShowDetailView: View {
     .sheet(isPresented: $showingEditSheet) {
       AddEditShowView(place: place)
     }
-    .alert("Delete Place?", isPresented: $showingDeleteAlert) {
-      Button("Delete", role: .destructive) {
+    .alert(AppStrings.deletePlaceQuestion, isPresented: $showingDeleteAlert) {
+      Button(AppStrings.delete, role: .destructive) {
         modelContext.delete(place)
         dismiss()
       }
-      Button("Cancel", role: .cancel) {}
+      Button(AppStrings.cancel, role: .cancel) {}
     } message: {
-      Text("This will permanently remove \(place.placeName) from your history")
+      Text(AppStrings.permanentlyRemove(place.placeName))
     }
   }
 }

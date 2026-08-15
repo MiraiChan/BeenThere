@@ -15,7 +15,7 @@ struct ShowRowView: View {
       
       HStack(spacing: 4) {
         Text(place.category)
-        Text("-")
+        Text(AppStrings.hyphen)
         Text(place.address)
       }
       .font(.subheadline)

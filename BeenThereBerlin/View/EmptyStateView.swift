@@ -9,8 +9,8 @@ import SwiftUI
 
 struct EmptyStateView: View {
   let icon: String
-  let title: String
-  let message: String
+  let title: LocalizedStringResource
+  let message: LocalizedStringResource
   
     var body: some View {
       ContentUnavailableView(title, systemImage: icon, description: Text(message))

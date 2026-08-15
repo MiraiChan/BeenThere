@@ -13,10 +13,10 @@ struct OnboardingView: View {
   @State private var currentPage = 0
   @State private var notificationsRequested = false
   
-  private let pages: [(icon: String, color: Color, title: String, description: String)] = [
-    ("map.fill", .purple, "Your Family Places", "Log every place you've visited. Build a record of your family's favorite spots."),
-    ("star.circle.fill", .pink, "Every Detail Captured", "Activities, ratings, notes - everything that made each visit unforgettable."),
-    ("calendar", .blue, "Never miss a place", "Save upcoming places and keep track of what's on your radar.")
+  private let pages: [(icon: String, color: Color, title: LocalizedStringResource, description: LocalizedStringResource)] = [
+    ("map.fill", .purple, AppStrings.yourFamilyPlaces, AppStrings.logEveryPlace),
+    ("star.circle.fill", .pink, AppStrings.everyDetailCaptured, AppStrings.activitiesRatingsNotes),
+    ("calendar", .blue, AppStrings.neverMissAPlace, AppStrings.saveUpcomingPlaces)
   ]
   
   private var isLastPage: Bool {
@@ -47,7 +47,7 @@ struct OnboardingView: View {
       .animation(.easeInOut, value: currentPage)
       
       Button(action: advance) {
-        Text(isLastPage ? "Let's go!" : "Continue")
+        Text(isLastPage ? AppStrings.letsGo : AppStrings.continueBtn)
           .font(.headline)
           .frame(maxWidth: .infinity)
           .padding()
