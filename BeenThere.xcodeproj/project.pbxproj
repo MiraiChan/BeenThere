@@ -6,19 +6,84 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		016AD85C303B7CCC00D5DD42 /* PlaceShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 016AD852303B7CCC00D5DD42 /* PlaceShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		016AD85A303B7CCC00D5DD42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01B631222FEFC2BD00681DA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 016AD851303B7CCC00D5DD42;
+			remoteInfo = PlaceShareExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		016AD85D303B7CCC00D5DD42 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				016AD85C303B7CCC00D5DD42 /* PlaceShareExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		016AD852303B7CCC00D5DD42 /* PlaceShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PlaceShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		016AD862303B7D1600D5DD42 /* BeenThere.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeenThere.entitlements; sourceTree = "<group>"; };
 		01B6312A2FEFC2BE00681DA2 /* BeenThere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeenThere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		016AD860303B7CCC00D5DD42 /* Exceptions for "PlaceShareExtension" folder in "PlaceShareExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 016AD851303B7CCC00D5DD42 /* PlaceShareExtension */;
+		};
+		016AD865303B7F4900D5DD42 /* Exceptions for "BeenThereBerlin" folder in "PlaceShareExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Model/Experience.swift,
+			);
+			target = 016AD851303B7CCC00D5DD42 /* PlaceShareExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		016AD853303B7CCC00D5DD42 /* PlaceShareExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				016AD860303B7CCC00D5DD42 /* Exceptions for "PlaceShareExtension" folder in "PlaceShareExtension" target */,
+			);
+			path = PlaceShareExtension;
+			sourceTree = "<group>";
+		};
 		01B6312C2FEFC2BE00681DA2 /* BeenThereBerlin */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				016AD865303B7F4900D5DD42 /* Exceptions for "BeenThereBerlin" folder in "PlaceShareExtension" target */,
+			);
 			path = BeenThereBerlin;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		016AD84F303B7CCC00D5DD42 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		01B631272FEFC2BE00681DA2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -32,7 +97,9 @@
 		01B631212FEFC2BD00681DA2 = {
 			isa = PBXGroup;
 			children = (
+				016AD862303B7D1600D5DD42 /* BeenThere.entitlements */,
 				01B6312C2FEFC2BE00681DA2 /* BeenThereBerlin */,
+				016AD853303B7CCC00D5DD42 /* PlaceShareExtension */,
 				01B6312B2FEFC2BE00681DA2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				01B6312A2FEFC2BE00681DA2 /* BeenThere.app */,
+				016AD852303B7CCC00D5DD42 /* PlaceShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,6 +116,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		016AD851303B7CCC00D5DD42 /* PlaceShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 016AD861303B7CCC00D5DD42 /* Build configuration list for PBXNativeTarget "PlaceShareExtension" */;
+			buildPhases = (
+				016AD84E303B7CCC00D5DD42 /* Sources */,
+				016AD84F303B7CCC00D5DD42 /* Frameworks */,
+				016AD850303B7CCC00D5DD42 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				016AD853303B7CCC00D5DD42 /* PlaceShareExtension */,
+			);
+			name = PlaceShareExtension;
+			packageProductDependencies = (
+			);
+			productName = PlaceShareExtension;
+			productReference = 016AD852303B7CCC00D5DD42 /* PlaceShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		01B631292FEFC2BE00681DA2 /* BeenThere */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 01B631352FEFC2C000681DA2 /* Build configuration list for PBXNativeTarget "BeenThere" */;
@@ -55,10 +145,12 @@
 				01B631262FEFC2BE00681DA2 /* Sources */,
 				01B631272FEFC2BE00681DA2 /* Frameworks */,
 				01B631282FEFC2BE00681DA2 /* Resources */,
+				016AD85D303B7CCC00D5DD42 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				016AD85B303B7CCC00D5DD42 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				01B6312C2FEFC2BE00681DA2 /* BeenThereBerlin */,
@@ -80,6 +172,9 @@
 				LastSwiftUpdateCheck = 2610;
 				LastUpgradeCheck = 2610;
 				TargetAttributes = {
+					016AD851303B7CCC00D5DD42 = {
+						CreatedOnToolsVersion = 26.1;
+					};
 					01B631292FEFC2BE00681DA2 = {
 						CreatedOnToolsVersion = 26.1;
 					};
@@ -102,11 +197,19 @@
 			projectRoot = "";
 			targets = (
 				01B631292FEFC2BE00681DA2 /* BeenThere */,
+				016AD851303B7CCC00D5DD42 /* PlaceShareExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		016AD850303B7CCC00D5DD42 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		01B631282FEFC2BE00681DA2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -117,6 +220,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		016AD84E303B7CCC00D5DD42 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		01B631262FEFC2BE00681DA2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -126,7 +236,73 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		016AD85B303B7CCC00D5DD42 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 016AD851303B7CCC00D5DD42 /* PlaceShareExtension */;
+			targetProxy = 016AD85A303B7CCC00D5DD42 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		016AD85E303B7CCC00D5DD42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = PlaceShareExtension/PlaceShareExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RLCVQ32K8A;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlaceShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PlaceShareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AlmiraKhafizova.BeenThere.PlaceShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		016AD85F303B7CCC00D5DD42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = PlaceShareExtension/PlaceShareExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RLCVQ32K8A;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlaceShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PlaceShareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AlmiraKhafizova.BeenThere.PlaceShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		01B631332FEFC2C000681DA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -255,6 +431,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BeenThereLogo;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BeenThere.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RLCVQ32K8A;
@@ -291,6 +468,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BeenThereLogo;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BeenThere.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RLCVQ32K8A;
@@ -325,6 +503,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		016AD861303B7CCC00D5DD42 /* Build configuration list for PBXNativeTarget "PlaceShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				016AD85E303B7CCC00D5DD42 /* Debug */,
+				016AD85F303B7CCC00D5DD42 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		01B631252FEFC2BD00681DA2 /* Build configuration list for PBXProject "BeenThere" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
