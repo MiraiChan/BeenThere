@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "01B631292FEFC2BE00681DA2"
-               BuildableName = "BeenThereBerlin.app"
-               BlueprintName = "BeenThereBerlin"
-               ReferencedContainer = "container:BeenThereBerlin.xcodeproj">
+               BuildableName = "BeenThere.app"
+               BlueprintName = "BeenThere"
+               ReferencedContainer = "container:BeenThere.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,9 +46,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "01B631292FEFC2BE00681DA2"
-            BuildableName = "BeenThereBerlin.app"
-            BlueprintName = "BeenThereBerlin"
-            ReferencedContainer = "container:BeenThereBerlin.xcodeproj">
+            BuildableName = "BeenThere.app"
+            BlueprintName = "BeenThere"
+            ReferencedContainer = "container:BeenThere.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -63,9 +63,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "01B631292FEFC2BE00681DA2"
-            BuildableName = "BeenThereBerlin.app"
-            BlueprintName = "BeenThereBerlin"
-            ReferencedContainer = "container:BeenThereBerlin.xcodeproj">
+            BuildableName = "BeenThere.app"
+            BlueprintName = "BeenThere"
+            ReferencedContainer = "container:BeenThere.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

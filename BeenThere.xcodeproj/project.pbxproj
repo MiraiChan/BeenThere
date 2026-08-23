@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		01B6312A2FEFC2BE00681DA2 /* BeenThereBerlin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeenThereBerlin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		01B6312A2FEFC2BE00681DA2 /* BeenThere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeenThere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -40,7 +40,7 @@
 		01B6312B2FEFC2BE00681DA2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				01B6312A2FEFC2BE00681DA2 /* BeenThereBerlin.app */,
+				01B6312A2FEFC2BE00681DA2 /* BeenThere.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,9 +48,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		01B631292FEFC2BE00681DA2 /* BeenThereBerlin */ = {
+		01B631292FEFC2BE00681DA2 /* BeenThere */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 01B631352FEFC2C000681DA2 /* Build configuration list for PBXNativeTarget "BeenThereBerlin" */;
+			buildConfigurationList = 01B631352FEFC2C000681DA2 /* Build configuration list for PBXNativeTarget "BeenThere" */;
 			buildPhases = (
 				01B631262FEFC2BE00681DA2 /* Sources */,
 				01B631272FEFC2BE00681DA2 /* Frameworks */,
@@ -63,11 +63,11 @@
 			fileSystemSynchronizedGroups = (
 				01B6312C2FEFC2BE00681DA2 /* BeenThereBerlin */,
 			);
-			name = BeenThereBerlin;
+			name = BeenThere;
 			packageProductDependencies = (
 			);
 			productName = BeenThereBerlin;
-			productReference = 01B6312A2FEFC2BE00681DA2 /* BeenThereBerlin.app */;
+			productReference = 01B6312A2FEFC2BE00681DA2 /* BeenThere.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -85,7 +85,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 01B631252FEFC2BD00681DA2 /* Build configuration list for PBXProject "BeenThereBerlin" */;
+			buildConfigurationList = 01B631252FEFC2BD00681DA2 /* Build configuration list for PBXProject "BeenThere" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -101,7 +101,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				01B631292FEFC2BE00681DA2 /* BeenThereBerlin */,
+				01B631292FEFC2BE00681DA2 /* BeenThere */,
 			);
 		};
 /* End PBXProject section */
@@ -270,15 +270,19 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = AlmiraKhafizova.BeenThereBerlin;
+				PRODUCT_BUNDLE_IDENTIFIER = AlmiraKhafizova.BeenThere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -302,22 +306,26 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = AlmiraKhafizova.BeenThereBerlin;
+				PRODUCT_BUNDLE_IDENTIFIER = AlmiraKhafizova.BeenThere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		01B631252FEFC2BD00681DA2 /* Build configuration list for PBXProject "BeenThereBerlin" */ = {
+		01B631252FEFC2BD00681DA2 /* Build configuration list for PBXProject "BeenThere" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				01B631332FEFC2C000681DA2 /* Debug */,
@@ -326,7 +334,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		01B631352FEFC2C000681DA2 /* Build configuration list for PBXNativeTarget "BeenThereBerlin" */ = {
+		01B631352FEFC2C000681DA2 /* Build configuration list for PBXNativeTarget "BeenThere" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				01B631362FEFC2C000681DA2 /* Debug */,
