@@ -32,7 +32,13 @@ struct ShowDetailView: View {
       Section(AppStrings.placeInfo) {
         LabeledContent(AppStrings.name, value: place.placeName)
         LabeledContent(AppStrings.category, value: place.category)
-        LabeledContent(AppStrings.address, value: place.address)
+        if let url = URL(string: place.address), let scheme = url.scheme, ["http", "https"].contains(scheme.lowercased()) {
+          LabeledContent(AppStrings.address) {
+            Link(place.address, destination: url)
+          }
+        } else {
+          LabeledContent(AppStrings.address, value: place.address)
+        }
         LabeledContent(AppStrings.date, value: place.date.formatted(date: .long, time: .omitted))
         LabeledContent(AppStrings.status, value: place.status.rawValue.capitalized)
       }
