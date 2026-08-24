@@ -33,7 +33,6 @@ class ShareViewModel: ObservableObject {
     @Published var placeName: String = ""
     @Published var address: String = ""
     @Published var category: String = ""
-    @Published var debugLogs: String = ""
     
     let extensionContext: NSExtensionContext?
     
@@ -42,9 +41,9 @@ class ShareViewModel: ObservableObject {
     }
     
     func log(_ message: String) {
-        DispatchQueue.main.async {
-            self.debugLogs += message + "\n"
-        }
+        #if DEBUG
+        print("ShareExtension: \(message)")
+        #endif
     }
     
     func loadSharedData() {
@@ -222,14 +221,6 @@ struct ShareExtensionView: View {
                 
                 Section(header: Text("Category")) {
                     TextField("Category (e.g., Park, Museum)", text: $viewModel.category)
-                }
-                
-                if !viewModel.debugLogs.isEmpty {
-                    Section(header: Text("Debug Info")) {
-                        Text(viewModel.debugLogs)
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                    }
                 }
             }
             .navigationTitle("Save to Been There")
