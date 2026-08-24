@@ -34,7 +34,8 @@ struct ShowDetailView: View {
         LabeledContent(AppStrings.category, value: place.category)
         if let url = URL(string: place.address), let scheme = url.scheme, ["http", "https"].contains(scheme.lowercased()) {
           LabeledContent(AppStrings.address) {
-            Link(place.address, destination: url)
+            Link(url.host ?? String(localized: AppStrings.website), destination: url)
+              .lineLimit(1)
           }
         } else {
           LabeledContent(AppStrings.address, value: place.address)

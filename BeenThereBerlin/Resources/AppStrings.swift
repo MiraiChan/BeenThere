@@ -9,6 +9,7 @@ public enum AppStrings {
     public static let name: LocalizedStringResource = "Name"
     public static let category: LocalizedStringResource = "Category"
     public static let address: LocalizedStringResource = "Address"
+    public static let website: LocalizedStringResource = "Website"
     public static let date: LocalizedStringResource = "Date"
     public static let status: LocalizedStringResource = "Status"
     public static let notes: LocalizedStringResource = "Notes"

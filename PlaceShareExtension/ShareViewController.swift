@@ -4,6 +4,7 @@ import SwiftData
 import UniformTypeIdentifiers
 import Social
 import Combine
+import LinkPresentation
 
 class ShareViewController: UIViewController {
 
@@ -137,9 +138,21 @@ class ShareViewModel: ObservableObject {
                 }
             }
         }
-        
         if address.isEmpty {
             address = url.absoluteString
+        }
+        
+        if placeName.isEmpty {
+            let provider = LPMetadataProvider()
+            provider.startFetchingMetadata(for: url) { [weak self] metadata, error in
+                if let title = metadata?.title, !title.isEmpty {
+                    DispatchQueue.main.async {
+                        if self?.placeName.isEmpty == true {
+                            self?.placeName = title
+                        }
+                    }
+                }
+            }
         }
     }
     
