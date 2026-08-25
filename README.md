@@ -10,7 +10,7 @@ An elegant, modern iOS application built to help families and explorers log, tra
 - **Rich Logging:** Track dates, status, custom categories, personalized notes, interactive star ratings, and lists of activities for each location.
 - **Data Persistence (SwiftData):** Built from the ground up using Apple's modern SwiftData framework for blazing fast, reliable local storage.
 - **Dynamic Search & Filtering:** Quickly search through your places by name, category, or address.
-- **Fully Localized UI:** Ready for localization with structured string catalogs.
+- **Fully Localized UI:** Built with Apple's modern String Catalogs (`.xcstrings`), making the app fully ready for multi-language support and pluralization.
 
 ## Tech Stack & Architecture
 
@@ -19,6 +19,7 @@ An elegant, modern iOS application built to help families and explorers log, tra
 - **Database:** SwiftData (Schema creation, ModelContainer, ModelContext)
 - **APIs:** MapKit, UniformTypeIdentifiers, LinkPresentation
 - **Extensions:** Share Extension (App Extension architecture, NSExtensionContext, App Groups for shared data containers)
+- **Localization:** String Catalogs (.xcstrings)
 - **Minimum iOS Version:** iOS 17.0+
 
 ## Technical Highlights (For Recruiters/Reviewers)
@@ -27,6 +28,7 @@ An elegant, modern iOS application built to help families and explorers log, tra
 2. **App Extensions & Data Sharing:** Includes a robust **Share Extension** that parses deep links, vCards, and metadata in real-time. It uses `LinkPresentation` to fetch URL metadata on the fly and communicates with the main app via a shared App Group container.
 3. **Clean Architecture:** Separates concerns efficiently using the MVVM pattern alongside SwiftUI's environment. Strings and constants are safely abstracted, and the UI is cleanly split into modular views.
 4. **Attention to UX/UI:** Focuses heavily on the user experience—utilizing native iOS components like Sheets, native Apple Maps integration, interactive star ratings, and polished lists. 
+5. **Modern Localization:** Leverages the new String Catalogs for a robust and scalable approach to handling string localization, pluralization, and variable interpolation, ensuring the app is globally accessible. 
 
 ## How to Run
 
