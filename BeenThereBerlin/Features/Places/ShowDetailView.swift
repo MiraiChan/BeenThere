@@ -52,6 +52,7 @@ struct ShowDetailView: View {
               set: { place.rating = $0 > 0 ? $0 : nil }
             )
           )
+          .allowsHitTesting(false)
         }
       }
       
