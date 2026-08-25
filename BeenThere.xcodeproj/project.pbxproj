@@ -51,7 +51,7 @@
 		016AD865303B7F4900D5DD42 /* Exceptions for "BeenThereBerlin" folder in "PlaceShareExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Model/Experience.swift,
+				Model/FamilyPlace.swift,
 			);
 			target = 016AD851303B7CCC00D5DD42 /* PlaceShareExtension */;
 		};
