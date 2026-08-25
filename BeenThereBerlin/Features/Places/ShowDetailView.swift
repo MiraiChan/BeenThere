@@ -21,8 +21,23 @@ struct ShowDetailView: View {
     List {
       if let lat = place.latitude, let lon = place.longitude {
         Section {
-          Map(initialPosition: .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: lon), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)))) {
-            Marker(place.placeName, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon))
+          ZStack(alignment: .topTrailing) {
+            Map(initialPosition: .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: lon), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)))) {
+              Marker(place.placeName, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon))
+            }
+            
+            Button {
+              if let url = URL(string: "https://www.google.com/maps/search/?api=1&query=\(lat),\(lon)") {
+                UIApplication.shared.open(url)
+              }
+            } label: {
+              Image(systemName: "arrow.triangle.turn.up.right.diamond.fill")
+                .font(.title2)
+                .foregroundColor(.white)
+                .padding(10)
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
           }
           .frame(height: 200)
           .listRowInsets(EdgeInsets())
