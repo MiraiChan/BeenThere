@@ -22,7 +22,7 @@ struct StarRatingView: View {
         label: {
           Image(systemName: star <= rating ? AppStrings.Icons.starFill : AppStrings.Icons.star)
             .font(.title2)
-            .foregroundStyle(star <= rating ? Color.yellow: Color.secondary)
+            .foregroundStyle(star <= rating ? Color.appStarActive : Color.appStarInactive)
             .scaleEffect(star <= rating ? 1.1 : 1.0)
             .animation(.spring(response: 0.5), value: rating)
         }

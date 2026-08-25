@@ -17,19 +17,19 @@ struct OnboardingNotificationsPage: View {
       Spacer()
       Image(systemName: AppStrings.Icons.bellCircleFill)
         .font(.system(size: 90))
-        .foregroundStyle(.orange)
+        .foregroundStyle(Color.appNotificationIcon)
       Text(AppStrings.placeReminders)
         .font(.largeTitle)
         .bold()
         .multilineTextAlignment(.center)
       Text(AppStrings.getNotifiedBefore)
         .font(.body)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Color.appSecondaryText)
         .multilineTextAlignment(.center)
       
       if notificationsRequested {
         Label(AppStrings.youreAllSet, systemImage: AppStrings.Icons.checkmarkCircleFill)
-          .foregroundStyle(.green)
+          .foregroundStyle(Color.appSuccessIcon)
           .font(.headline)
       } else {
         Button(AppStrings.enableNotifications) {
