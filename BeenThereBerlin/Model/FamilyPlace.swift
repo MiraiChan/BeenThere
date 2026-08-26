@@ -42,11 +42,3 @@ final class FamilyPlace {
     self.createdAt = .now
   }
 }
-
-#Preview {
-  let config = ModelConfiguration(isStoredInMemoryOnly: true)
-  let container = try! ModelContainer(for: FamilyPlace.self, configurations: config)
-  let sample = FamilyPlace(placeName: "Tierpark", category: "Zoo", address: "Am Tierpark 125", date: .now, status: .visited)
-  container.mainContext.insert(sample)
-  return Text(sample.placeName).modelContainer(container)
-}

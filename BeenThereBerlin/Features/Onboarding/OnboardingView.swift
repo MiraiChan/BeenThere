@@ -13,6 +13,7 @@ struct OnboardingView: View {
   @State private var currentPage = 0
   @State private var notificationsRequested = false
   
+  // swiftlint:disable:next large_tuple
   private let pages: [(icon: String, color: Color, title: LocalizedStringResource, description: LocalizedStringResource)] = [
     (AppStrings.Icons.mapFill, .accentColor, AppStrings.yourFamilyPlaces, AppStrings.logEveryPlace),
     (AppStrings.Icons.starCircleFill, .accentColor, AppStrings.everyDetailCaptured, AppStrings.activitiesRatingsNotes),

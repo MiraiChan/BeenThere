@@ -1,0 +1,26 @@
+disabled_rules:
+  - trailing_whitespace
+  - file_length
+  - function_body_length
+  - type_body_length
+  - todo
+
+opt_in_rules:
+  - closure_spacing
+  - contains_over_first_not_nil
+  - empty_count
+  - explicit_init
+  - joined_default_parameter
+  - redundant_nil_coalescing
+  - vertical_parameter_alignment
+  - yoda_condition
+
+identifier_name:
+  excluded:
+    - id
+    - vm
+    - q
+
+line_length:
+  warning: 140
+  ignores_function_declarations: true
