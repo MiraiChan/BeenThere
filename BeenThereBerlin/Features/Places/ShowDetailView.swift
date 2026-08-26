@@ -33,7 +33,7 @@ struct ShowDetailView: View {
             } label: {
               Image(systemName: "arrow.triangle.turn.up.right.diamond.fill")
                 .font(.title2)
-                .foregroundColor(.white)
+                .foregroundColor(Color.appSecondary)
                 .padding(10)
                 .contentShape(Rectangle())
             }

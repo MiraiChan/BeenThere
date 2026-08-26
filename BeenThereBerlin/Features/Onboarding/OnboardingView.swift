@@ -52,8 +52,8 @@ struct OnboardingView: View {
           .font(.headline)
           .frame(maxWidth: .infinity)
           .padding()
-          .background(Color.appBackgroundAccent)
-          .foregroundStyle(Color.appButtonWhite)
+          .background(Color.accentColor)
+          .foregroundStyle(Color.appPrimary)
           .clipShape(RoundedRectangle(cornerRadius: 16))
       }
       .padding(.horizontal)

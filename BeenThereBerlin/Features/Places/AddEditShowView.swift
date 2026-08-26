@@ -38,7 +38,7 @@ struct AddEditShowView: View {
               }) {
                 VStack(alignment: .leading) {
                   Text(result.title)
-                    .foregroundStyle(.primary)
+                    .foregroundStyle(Color.appSecondary)
                   if !result.subtitle.isEmpty {
                     Text(result.subtitle)
                       .font(.caption)
