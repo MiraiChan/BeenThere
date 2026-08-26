@@ -17,7 +17,7 @@ struct OnboardingNotificationsPage: View {
       Spacer()
       Image(systemName: AppStrings.Icons.bellCircleFill)
         .font(.system(size: 90))
-        .foregroundStyle(Color.appNotificationIcon)
+        .foregroundStyle(Color.accentColor)
       Text(AppStrings.placeReminders)
         .font(.largeTitle)
         .bold()

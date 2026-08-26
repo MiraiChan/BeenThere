@@ -99,6 +99,8 @@ struct AddEditShowView: View {
             .trimmingCharacters(in: .whitespaces).isEmpty)
         }
       }
+      .scrollContentBackground(.hidden)
+      .background(Color.appPrimary)
       .navigationTitle(existingPlace == nil ? AppStrings.addPlace : AppStrings.editPlace)
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {

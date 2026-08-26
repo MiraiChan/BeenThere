@@ -12,8 +12,9 @@ extension Color {
     static let appSuccessIcon = Color.green
     static let appPrimaryText = Color.primary
     static let appSecondaryText = Color.secondary
-  static let appPrimary = Color.backgroundPrimary
-  static let appSecondary = Color.buttonPrimary
-    
+    static let appPrimary = Color.backgroundPrimary
+    static let appSecondary = Color.buttonPrimary
     static let accentColor = Color.accent
+    static let appBackgroundAccent = Color.accentColor
+    static let appButtonWhite = Color.white
 }

@@ -29,6 +29,7 @@ struct MarkAttendedSheet: View {
         Spacer()
       }
       .padding()
+      .background(Color.appPrimary.ignoresSafeArea())
       .navigationTitle(AppStrings.markAsVisited)
       .navigationBarTitleDisplayMode(.inline)
       

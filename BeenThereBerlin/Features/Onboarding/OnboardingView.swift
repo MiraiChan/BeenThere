@@ -14,9 +14,9 @@ struct OnboardingView: View {
   @State private var notificationsRequested = false
   
   private let pages: [(icon: String, color: Color, title: LocalizedStringResource, description: LocalizedStringResource)] = [
-    (AppStrings.Icons.mapFill, .appSecondary, AppStrings.yourFamilyPlaces, AppStrings.logEveryPlace),
-    (AppStrings.Icons.starCircleFill, .appSecondary, AppStrings.everyDetailCaptured, AppStrings.activitiesRatingsNotes),
-    (AppStrings.Icons.calendar, .appSecondary, AppStrings.neverMissAPlace, AppStrings.saveUpcomingPlaces)
+    (AppStrings.Icons.mapFill, .accentColor, AppStrings.yourFamilyPlaces, AppStrings.logEveryPlace),
+    (AppStrings.Icons.starCircleFill, .accentColor, AppStrings.everyDetailCaptured, AppStrings.activitiesRatingsNotes),
+    (AppStrings.Icons.calendar, .accentColor, AppStrings.neverMissAPlace, AppStrings.saveUpcomingPlaces)
   ]
   
   private var isLastPage: Bool {
@@ -58,6 +58,7 @@ struct OnboardingView: View {
       .padding(.horizontal)
       .padding(.bottom, 32)
     }
+    .background(Color.appPrimary.ignoresSafeArea())
   }
 }
 

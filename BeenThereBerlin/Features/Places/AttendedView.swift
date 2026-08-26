@@ -32,8 +32,10 @@ struct AttendedView: View {
               }
             }
           }
+          .scrollContentBackground(.hidden)
         }
       }
+      .background(Color.appPrimary)
       .navigationTitle(AppStrings.visited)
       .searchable(text: $vm.searchText, prompt: AppStrings.searchPlaceholder)
       .navigationDestination(for: FamilyPlace.self) { place in

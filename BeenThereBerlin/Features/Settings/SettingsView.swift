@@ -49,6 +49,8 @@ struct SettingsView: View {
             LabeledContent(AppStrings.version, value: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0")
           }
         }
+        .scrollContentBackground(.hidden)
+        .background(Color.appPrimary)
         .navigationTitle(AppStrings.settings)
         .onAppear {
           viewModel.checkNotificationStatus()

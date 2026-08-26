@@ -42,8 +42,10 @@ struct UpcomingView: View {
               }
             }
           }
+          .scrollContentBackground(.hidden)
         }
       }
+      .background(Color.appPrimary)
       .navigationTitle(AppStrings.wishlist)
       .navigationDestination(for: FamilyPlace.self) { place in
         ShowDetailView(place: place)

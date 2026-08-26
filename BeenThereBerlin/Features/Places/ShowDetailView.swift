@@ -115,6 +115,8 @@ struct ShowDetailView: View {
         }
       }
     }
+    .scrollContentBackground(.hidden)
+    .background(Color.appPrimary)
     .toolbar {
       ToolbarItem(placement: .primaryAction) {
         Menu {
