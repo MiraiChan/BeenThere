@@ -83,9 +83,15 @@ struct AddEditShowView: View {
                 .frame(width: 28, alignment: .leading)
               Text(viewModel.activities[index])
             }
-          }
-          .onDelete {
-            viewModel.activities.remove(atOffsets: $0)
+            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+              Button {
+                viewModel.activities.remove(at: index)
+              } label: {
+                Label(AppStrings.delete, systemImage: "trash")
+              }
+              .tint(.accentColor)
+              .foregroundStyle(Color.appPrimary)
+            }
           }
           .onMove {
             viewModel.activities.move(fromOffsets: $0, toOffset: $1)

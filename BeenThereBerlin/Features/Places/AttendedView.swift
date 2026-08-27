@@ -24,11 +24,14 @@ struct AttendedView: View {
               NavigationLink(value: place) {
                 ShowRowView(place: place)
               }
-            }
-            .onDelete { indexSet in
-              let places = viewModel.filteredShows(allPlaces)
-              for index in indexSet {
-                viewModel.delete(places[index], context: modelContext)
+              .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                Button {
+                  viewModel.delete(place, context: modelContext)
+                } label: {
+                  Label(AppStrings.delete, systemImage: "trash")
+                }
+                .tint(.accentColor)
+                .foregroundStyle(Color.appPrimary)
               }
             }
           }

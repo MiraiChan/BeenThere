@@ -128,8 +128,12 @@ struct ShowDetailView: View {
             showingEditSheet = true
           }
           Divider()
-          Button(AppStrings.deletePlaceTitle, role: .destructive) {
+          Button(role: .destructive) {
             showingDeleteAlert = true
+          } label: {
+            Label(AppStrings.deletePlaceTitle, systemImage: "trash")
+              .tint(.accentColor)
+              .foregroundStyle(Color.appPrimary)
           }
         } label: {
           Image(systemName: AppStrings.Icons.ellipsisCircle)
