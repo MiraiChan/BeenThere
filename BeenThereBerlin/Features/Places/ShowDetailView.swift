@@ -40,7 +40,11 @@ struct ShowDetailView: View {
             .buttonStyle(.plain)
           }
           .frame(height: 200)
-          .listRowInsets(EdgeInsets())
+          .clipShape(RoundedRectangle(cornerRadius: 20))
+          .shadow(color: Color.appSecondary.opacity(0.15), radius: 3, x: 0, y: 1)
+          .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+          .listRowBackground(Color.clear)
+          .listRowSeparator(.hidden)
         }
       }
       
