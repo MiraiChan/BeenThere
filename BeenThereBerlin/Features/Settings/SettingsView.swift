@@ -14,7 +14,7 @@ struct SettingsView: View {
   
   var body: some View {
     NavigationStack {
-      Form{
+      Form {
         Section(AppStrings.yourStats) {
           LabeledContent(AppStrings.placesVisited, value: "\(viewModel.attendedCount(allPlaces))")
           LabeledContent(AppStrings.wishlist, value: "\(viewModel.upcomingCount(allPlaces))")
@@ -23,6 +23,7 @@ struct SettingsView: View {
             LabeledContent(AppStrings.topCategory, value: topArtist)
           }
         }
+        .appRowBackground()
           
           Section(AppStrings.notifications) {
             Toggle(
@@ -32,22 +33,31 @@ struct SettingsView: View {
                 set: { enabled in
                   if enabled {
                     viewModel.requestNotificationPermission()
+                  } else {
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                      UIApplication.shared.open(url)
+                    }
                   }
                 }
               )
             )
+            .tint(Color.accentColor)
           }
+          .appRowBackground()
           
           Section(AppStrings.yourData) {
             ShareLink(item: viewModel.exportText(allPlaces)) {
               Label(AppStrings.exportHistory, systemImage: AppStrings.Icons.squareAndArrowUp)
             }
             .disabled(allPlaces.isEmpty)
+            .foregroundStyle(Color.accentColor)
           }
+          .appRowBackground()
           
           Section(AppStrings.app) {
             LabeledContent(AppStrings.version, value: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0")
           }
+          .appRowBackground()
         }
         .scrollContentBackground(.hidden)
         .background(Color.appPrimary)

@@ -8,6 +8,7 @@
 import SwiftData
 import UserNotifications
 import Foundation
+import UIKit
 
 @Observable
 final class SettingsViewModel {
@@ -47,9 +48,19 @@ final class SettingsViewModel {
   }
   
   func requestNotificationPermission() {
-    UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound, .badge]) { granted, _ in
-      DispatchQueue.main.async {
-        self.notificationsEnabled = granted
+    UNUserNotificationCenter.current().getNotificationSettings { settings in
+      if settings.authorizationStatus == .denied {
+        DispatchQueue.main.async {
+          if let url = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(url)
+          }
+        }
+      } else {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
+          DispatchQueue.main.async {
+            self.notificationsEnabled = granted
+          }
+        }
       }
     }
   }
