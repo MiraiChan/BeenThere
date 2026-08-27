@@ -13,6 +13,11 @@ struct OnboardingView: View {
   @State private var currentPage = 0
   @State private var notificationsRequested = false
   
+  init() {
+    UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color.appSecondary)
+    UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color.appSecondary).withAlphaComponent(0.2)
+  }
+  
   // swiftlint:disable:next large_tuple
   private let pages: [(icon: String, color: Color, title: LocalizedStringResource, description: LocalizedStringResource)] = [
     (AppStrings.Icons.mapFill, .accentColor, AppStrings.yourFamilyPlaces, AppStrings.logEveryPlace),
