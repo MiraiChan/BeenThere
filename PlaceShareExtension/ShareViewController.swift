@@ -47,29 +47,29 @@ struct ShareExtensionView: View {
   var body: some View {
     NavigationStack {
       Form {
-        Section(header: Text("Place Details")) {
-          TextField("Name", text: $viewModel.placeName)
-          TextField("Address", text: $viewModel.address)
+        Section(header: Text(AppStrings.placeDetails)) {
+          TextField(AppStrings.name, text: $viewModel.placeName)
+          TextField(AppStrings.address, text: $viewModel.address)
         }
         .appRowBackground()
         
-        Section(header: Text("Category")) {
-          TextField("Category (e.g., Park, Museum)", text: $viewModel.category)
+        Section(header: Text(AppStrings.category)) {
+          TextField(AppStrings.categoryExample, text: $viewModel.category)
         }
         .appRowBackground()
       }
       .scrollContentBackground(.hidden)
       .background(Color.appPrimary)
-      .navigationTitle("Save to BeenThere")
+      .navigationTitle(Text(AppStrings.saveToBeenThere))
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         ToolbarItem(placement: .cancellationAction) {
-          Button("Cancel") {
+          Button(AppStrings.cancel) {
             viewModel.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
           }
         }
         ToolbarItem(placement: .confirmationAction) {
-          Button("Save") {
+          Button(AppStrings.save) {
             savePlace()
           }
           .disabled(viewModel.placeName.isEmpty)
@@ -89,8 +89,8 @@ struct ShareExtensionView: View {
       let sharedModelContainer = try ModelContainer(for: schema, configurations: [modelConfiguration])
       
       let context = ModelContext(sharedModelContainer)
-      let newPlace = FamilyPlace(placeName: viewModel.placeName.isEmpty ? "Unknown Place" : viewModel.placeName,
-                                 category: viewModel.category.isEmpty ? "Uncategorized" : viewModel.category,
+      let newPlace = FamilyPlace(placeName: viewModel.placeName.isEmpty ? String(localized: AppStrings.unknownPlace) : viewModel.placeName,
+                                 category: viewModel.category.isEmpty ? String(localized: AppStrings.uncategorized) : viewModel.category,
                                  address: viewModel.address,
                                  date: .now,
                                  status: .wishlist)

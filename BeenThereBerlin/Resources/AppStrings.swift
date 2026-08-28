@@ -95,6 +95,14 @@ public enum AppStrings {
     // SettingsViewModel
     public static let myPlacesHistoryTitle: LocalizedStringResource = "My BeenThereBerlin Places History\n\n"
     public static let noPlacesLogged: LocalizedStringResource = "No Places Logged"
+    
+    // Share Extension
+    public static let placeDetails: LocalizedStringResource = "Place Details"
+    public static let categoryExample: LocalizedStringResource = "Category (e.g., Park, Museum)"
+    public static let saveToBeenThere: LocalizedStringResource = "Save to BeenThere"
+    public static let unknownPlace: LocalizedStringResource = "Unknown Place"
+    public static let uncategorized: LocalizedStringResource = "Uncategorized"
+    
     // System Images & Icons
     public enum Icons {
         public static let ellipsisCircle = "ellipsis.circle"

@@ -53,6 +53,7 @@
 			membershipExceptions = (
 				Model/FamilyPlace.swift,
 				Resources/AppStrings.swift,
+				Resources/Localizable.xcstrings,
 			);
 			target = 016AD851303B7CCC00D5DD42 /* PlaceShareExtension */;
 		};
