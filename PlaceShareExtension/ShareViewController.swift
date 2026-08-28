@@ -20,6 +20,7 @@ class ShareViewController: UIViewController {
     
     let contentView = ShareExtensionView(extensionContext: self.extensionContext)
     let hostingController = UIHostingController(rootView: contentView)
+    hostingController.view.backgroundColor = .clear
     
     self.addChild(hostingController)
     self.view.addSubview(hostingController.view)
@@ -50,11 +51,15 @@ struct ShareExtensionView: View {
           TextField("Name", text: $viewModel.placeName)
           TextField("Address", text: $viewModel.address)
         }
+        .appRowBackground()
         
         Section(header: Text("Category")) {
           TextField("Category (e.g., Park, Museum)", text: $viewModel.category)
         }
+        .appRowBackground()
       }
+      .scrollContentBackground(.hidden)
+      .background(Color.appPrimary)
       .navigationTitle("Save to BeenThere")
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
@@ -68,6 +73,7 @@ struct ShareExtensionView: View {
             savePlace()
           }
           .disabled(viewModel.placeName.isEmpty)
+          .tint(Color(red: 0.733, green: 0.035, blue: 0.043))
         }
       }
     }
@@ -98,4 +104,23 @@ struct ShareExtensionView: View {
       print("Failed to create container or save: \(error)")
     }
   }
+}
+
+fileprivate extension View {
+  func appRowBackground() -> some View {
+    listRowBackground(
+      Rectangle()
+        .fill(.thinMaterial)
+    )
+  }
+}
+
+fileprivate extension Color {
+  static let appPrimary = Color(UIColor { traitCollection in
+    if traitCollection.userInterfaceStyle == .dark {
+      return UIColor(red: 0x0F / 255.0, green: 0x0F / 255.0, blue: 0x12 / 255.0, alpha: 1.0)
+    } else {
+      return UIColor(red: 0xF9 / 255.0, green: 0xF4 / 255.0, blue: 0xEE / 255.0, alpha: 1.0)
+    }
+  })
 }

@@ -30,6 +30,7 @@ struct AddEditShowView: View {
             get: { vm.searchQuery },
             set: { vm.updateSearchQuery($0) }
           ))
+          .tint(Color.accentColor)
           
           if !vm.searchResults.isEmpty {
             ForEach(vm.searchResults, id: \.self) { result in
