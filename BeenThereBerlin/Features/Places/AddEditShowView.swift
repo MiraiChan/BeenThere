@@ -29,8 +29,10 @@ struct AddEditShowView: View {
           TextField(AppStrings.searchAppleMaps, text: Binding(
             get: { vm.searchQuery },
             set: { vm.updateSearchQuery($0) }
-          ))
+          ), prompt: Text(AppStrings.searchAppleMaps).foregroundColor(Color.appPrimary.opacity(0.5)))
+          .foregroundStyle(Color.appPrimary)
           .tint(Color.accentColor)
+          .listRowBackground(Color.appSecondary.opacity(0.9))
           
           if !vm.searchResults.isEmpty {
             ForEach(vm.searchResults, id: \.self) { result in
