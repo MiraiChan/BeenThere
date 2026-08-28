@@ -13,6 +13,7 @@ struct AddEditShowView: View {
   @Environment(\.modelContext) private var modelContext
   @Environment(\.dismiss) private var dismiss
   @State private var viewModel: AddEditShowViewModel
+  @FocusState private var isSearchFocused: Bool
   
   let existingPlace: FamilyPlace?
   
@@ -29,10 +30,13 @@ struct AddEditShowView: View {
           TextField(AppStrings.searchAppleMaps, text: Binding(
             get: { vm.searchQuery },
             set: { vm.updateSearchQuery($0) }
-          ), prompt: Text(AppStrings.searchAppleMaps).foregroundColor(Color.appPrimary.opacity(0.5)))
+          ), prompt: Text(AppStrings.searchAppleMaps).foregroundColor(Color.appSecondary.opacity(0.6)))
           .foregroundStyle(Color.appPrimary)
           .tint(Color.accentColor)
-          .listRowBackground(Color.appSecondary.opacity(0.9))
+          .listRowBackground(
+            Color.appSecondary.opacity(vm.searchQuery.isEmpty ? 0.1 : 0.9)
+          )
+          .focused($isSearchFocused)
           
           if !vm.searchResults.isEmpty {
             ForEach(vm.searchResults, id: \.self) { result in
@@ -113,6 +117,11 @@ struct AddEditShowView: View {
         }
         .appRowBackground()
       }
+      
+      .onAppear {
+        isSearchFocused = true
+      }
+      
       .scrollContentBackground(.hidden)
       .background(Color.appPrimary)
       .navigationTitle(existingPlace == nil ? AppStrings.addPlace : AppStrings.editPlace)
