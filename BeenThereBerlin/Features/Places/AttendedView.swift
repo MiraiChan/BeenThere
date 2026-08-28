@@ -24,6 +24,7 @@ struct AttendedView: View {
               NavigationLink(value: place) {
                 ShowRowView(place: place)
               }
+              .appRowBackground()
               .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                 Button {
                   viewModel.delete(place, context: modelContext)

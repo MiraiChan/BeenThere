@@ -64,6 +64,7 @@ struct ShowDetailView: View {
           Text(place.status.localizedTitle)
         }
       }
+      .appRowBackground()
       
       if place.status == .visited {
         Section(AppStrings.rating) {
@@ -75,6 +76,7 @@ struct ShowDetailView: View {
           )
           .allowsHitTesting(false)
         }
+        .appRowBackground()
       }
       
       Section(AppStrings.notes) {
@@ -86,6 +88,7 @@ struct ShowDetailView: View {
             .foregroundStyle(.secondary)
         }
       }
+      .appRowBackground()
       
       Section(AppStrings.activities) {
         if place.activities.isEmpty {
@@ -120,6 +123,7 @@ struct ShowDetailView: View {
           .disabled(newActivityEntry.trimmingCharacters(in: .whitespaces).isEmpty)
         }
       }
+      .appRowBackground()
     }
     .scrollContentBackground(.hidden)
     .background(Color.appPrimary)

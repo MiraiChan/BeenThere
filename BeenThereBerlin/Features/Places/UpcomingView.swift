@@ -26,6 +26,7 @@ struct UpcomingView: View {
               NavigationLink(value: place) {
                 ShowRowView(place: place)
               }
+              .appRowBackground()
               .swipeActions(edge: .leading) {
                 Button(AppStrings.visited) {
                   viewModel.showToMarkAttended = place

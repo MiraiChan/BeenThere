@@ -49,6 +49,7 @@ struct AddEditShowView: View {
             }
           }
         }
+        .appRowBackground()
         
         Section(AppStrings.placeInfo) {
           TextField(AppStrings.name, text: $vm.placeName)
@@ -62,18 +63,21 @@ struct AddEditShowView: View {
             }
           }
         }
+        .appRowBackground()
         
         if viewModel.status == .visited {
           Section(AppStrings.rating) {
             StarRatingView(rating: $vm.rating)
               .padding(.vertical, 4)
           }
+          .appRowBackground()
         }
         
         Section(AppStrings.notes) {
           TextField(AppStrings.addNotesPlaceholder, text: $vm.notes, axis: .vertical)
             .lineLimit(3...6)
         }
+        .appRowBackground()
         
         Section(AppStrings.activities) {
           ForEach(viewModel.activities.indices, id: \.self) { index in
@@ -104,6 +108,7 @@ struct AddEditShowView: View {
           .disabled(viewModel.newActivityEntry
             .trimmingCharacters(in: .whitespaces).isEmpty)
         }
+        .appRowBackground()
       }
       .scrollContentBackground(.hidden)
       .background(Color.appPrimary)
