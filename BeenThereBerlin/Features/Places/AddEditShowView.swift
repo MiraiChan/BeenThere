@@ -112,6 +112,7 @@ struct AddEditShowView: View {
       .toolbar {
         ToolbarItem(placement: .cancellationAction) {
           Button(AppStrings.cancel) { dismiss() }
+            .tint(Color.appSecondary)
         }
         ToolbarItem(placement: .confirmationAction) {
           Button(AppStrings.save) {

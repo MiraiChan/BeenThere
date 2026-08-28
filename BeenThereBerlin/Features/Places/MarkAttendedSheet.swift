@@ -39,6 +39,7 @@ struct MarkAttendedSheet: View {
             viewModel.pendingRating = 0
             dismiss()
           }
+          .tint(Color.appSecondary)
         }
         
         ToolbarItem(placement: .confirmationAction) {

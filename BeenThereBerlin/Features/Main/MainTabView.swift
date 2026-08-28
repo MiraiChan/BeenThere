@@ -19,5 +19,6 @@ struct MainTabView: View {
         SettingsView()
       }
     }
+    .tint(Color.accentColor)
   }
 }

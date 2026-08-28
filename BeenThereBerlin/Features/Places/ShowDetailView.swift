@@ -151,6 +151,7 @@ struct ShowDetailView: View {
         dismiss()
       }
       Button(AppStrings.cancel, role: .cancel) {}
+        .tint(Color.appSecondary)
     } message: {
       Text(AppStrings.permanentlyRemove(place.placeName))
     }
