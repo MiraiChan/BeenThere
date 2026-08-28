@@ -56,6 +56,7 @@ struct UpcomingView: View {
           Button(AppStrings.addPlace, systemImage: AppStrings.Icons.plus) {
             viewModel.showingAddSheet = true
           }
+          .tint(Color.appSecondary)
         }
       }
       .sheet(isPresented: $vm.showingAddSheet) {

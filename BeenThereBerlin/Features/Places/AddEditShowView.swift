@@ -57,7 +57,7 @@ struct AddEditShowView: View {
           DatePicker(AppStrings.date, selection: $vm.date, displayedComponents: .date)
           Picker(AppStrings.status, selection: $vm.status) {
             ForEach(VisitStatus.allCases, id:\.self) { status in
-              Text(status.rawValue.capitalized)
+              Text(status.localizedTitle)
                 .tag(status)
             }
           }

@@ -48,7 +48,7 @@ struct ShareExtensionView: View {
                     TextField("Category (e.g., Park, Museum)", text: $viewModel.category)
                 }
             }
-            .navigationTitle("Save to Been There")
+            .navigationTitle("Save to BeenThere")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

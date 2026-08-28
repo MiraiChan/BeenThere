@@ -49,6 +49,7 @@ struct AttendedView: View {
                systemImage: AppStrings.Icons.plus) {
           viewModel.showingAddSheet = true
         }
+               .tint(Color.appSecondary)
       }
       .sheet(isPresented: $vm.showingAddSheet) {
         AddEditShowView(initialStatus: .visited)

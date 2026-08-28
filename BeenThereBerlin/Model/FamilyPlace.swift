@@ -42,3 +42,14 @@ final class FamilyPlace {
     self.createdAt = .now
   }
 }
+
+extension VisitStatus {
+  var localizedTitle: LocalizedStringResource {
+    switch self {
+    case .visited:
+      AppStrings.visited
+    case .wishlist:
+      AppStrings.wishlist
+    }
+  }
+}

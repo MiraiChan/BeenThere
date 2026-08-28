@@ -60,7 +60,9 @@ struct ShowDetailView: View {
           LabeledContent(AppStrings.address, value: place.address)
         }
         LabeledContent(AppStrings.date, value: place.date.formatted(date: .long, time: .omitted))
-        LabeledContent(AppStrings.status, value: place.status.rawValue.capitalized)
+        LabeledContent(AppStrings.status) {
+          Text(place.status.localizedTitle)
+        }
       }
       
       if place.status == .visited {

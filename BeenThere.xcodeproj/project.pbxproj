@@ -52,6 +52,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Model/FamilyPlace.swift,
+				Resources/AppStrings.swift,
 			);
 			target = 016AD851303B7CCC00D5DD42 /* PlaceShareExtension */;
 		};
