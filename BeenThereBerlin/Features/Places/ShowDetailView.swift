@@ -138,7 +138,7 @@ struct ShowDetailView: View {
             showingDeleteAlert = true
           } label: {
             Label(AppStrings.deletePlaceTitle, systemImage: "trash")
-              .tint(.accentColor)
+              .symbolRenderingMode(.palette)
               .foregroundStyle(Color.appPrimary)
           }
         } label: {

@@ -17,7 +17,7 @@ struct UpcomingView: View {
     @Bindable var vm = viewModel
     
     NavigationStack {
-      Group{
+      Group {
         if viewModel.filteredShows(allPlaces).isEmpty {
           EmptyStateView(icon: AppStrings.Icons.calendar, title: AppStrings.nothingComingUp, message: AppStrings.savePlacesPlanning)
         } else {
@@ -27,20 +27,27 @@ struct UpcomingView: View {
                 ShowRowView(place: place)
               }
               .appRowBackground()
+              
               .swipeActions(edge: .leading) {
-                Button(AppStrings.visited) {
-                  viewModel.showToMarkAttended = place
-                }
-                .tint(.green)
-              }
-              .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                 Button {
+                  viewModel.showToMarkAttended = place
+                } label: {
+                  Label(AppStrings.visited, systemImage: "checkmark")
+                    .symbolRenderingMode(.palette)
+                    .foregroundStyle(Color.accentColor)
+                }
+                .tint(Color.appSecondary)
+              }
+              
+              .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                Button(role: .destructive) {
                   viewModel.delete(place, context: modelContext)
                 } label: {
                   Label(AppStrings.delete, systemImage: "trash")
+                    .symbolRenderingMode(.palette)
+                    .foregroundStyle(Color.appPrimary)
                 }
                 .tint(.accentColor)
-                .foregroundStyle(Color.appPrimary)
               }
             }
           }
@@ -63,8 +70,7 @@ struct UpcomingView: View {
       .sheet(isPresented: $vm.showingAddSheet) {
         AddEditShowView(initialStatus: .wishlist)
       }
-      .sheet(item: $vm.showToMarkAttended) {
-        place in
+      .sheet(item: $vm.showToMarkAttended) { place in
         MarkAttendedSheet(place: place, viewModel: viewModel)
       }
     }

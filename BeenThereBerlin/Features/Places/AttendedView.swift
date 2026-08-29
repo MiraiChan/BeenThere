@@ -26,13 +26,14 @@ struct AttendedView: View {
               }
               .appRowBackground()
               .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                Button {
+                Button(role: .destructive) {
                   viewModel.delete(place, context: modelContext)
                 } label: {
                   Label(AppStrings.delete, systemImage: "trash")
+                    .symbolRenderingMode(.palette)
+                    .foregroundStyle(Color.appPrimary)
                 }
                 .tint(.accentColor)
-                .foregroundStyle(Color.appPrimary)
               }
             }
           }

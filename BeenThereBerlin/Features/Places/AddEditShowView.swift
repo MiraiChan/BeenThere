@@ -95,13 +95,14 @@ struct AddEditShowView: View {
               Text(viewModel.activities[index])
             }
             .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-              Button {
+              Button(role: .destructive) {
                 viewModel.activities.remove(at: index)
               } label: {
-                Label(AppStrings.delete, systemImage: "trash")
+                Label("", systemImage: "trash")
+                  .symbolRenderingMode(.palette)
+                  .foregroundStyle(Color.appPrimary)
               }
               .tint(.accentColor)
-              .foregroundStyle(Color.appPrimary)
             }
           }
           .onMove {
