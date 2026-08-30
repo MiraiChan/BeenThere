@@ -13,39 +13,44 @@ struct MarkAttendedSheet: View {
   @Environment(\.dismiss) private var dismiss
   var body: some View {
     NavigationStack {
-      VStack(spacing: 24) {
-        Text(AppStrings.howWas(place.placeName))
-          .font(.title2)
-          .bold()
-          .multilineTextAlignment(.center)
-          .lineLimit(2)
-          .padding(.top)
+      ZStack {
+        Color.appPrimary
+          .ignoresSafeArea()
         
-        StarRatingView(rating: $viewModel.pendingRating)
-        
-        Text(AppStrings.optionalRating)
-          .font(.caption)
-          .foregroundStyle(.secondary)
-        Spacer()
-      }
-      .padding()
-      .background(Color.appPrimary.ignoresSafeArea())
-      .navigationTitle(AppStrings.markAsVisited)
-      .navigationBarTitleDisplayMode(.inline)
-      
-      .toolbar {
-        ToolbarItem(placement: .cancellationAction) {
-          Button(AppStrings.cancel) {
-            viewModel.pendingRating = 0
-            dismiss()
-          }
-          .tint(Color.appSecondary)
+        VStack(spacing: 24) {
+          Text(AppStrings.howWas(place.placeName))
+            .font(.title2)
+            .bold()
+            .multilineTextAlignment(.center)
+            .lineLimit(2)
+            .padding(.top)
+          
+          StarRatingView(rating: $viewModel.pendingRating)
+          
+          Text(AppStrings.optionalRating)
+            .font(.caption)
+            .foregroundStyle(.secondary)
+          Spacer()
         }
+        .padding()
         
-        ToolbarItem(placement: .confirmationAction) {
-          Button(AppStrings.done) {
-            viewModel.markAsAttended(place)
-            dismiss()
+        .navigationTitle(AppStrings.markAsVisited)
+        .navigationBarTitleDisplayMode(.inline)
+        
+        .toolbar {
+          ToolbarItem(placement: .cancellationAction) {
+            Button(AppStrings.cancel) {
+              viewModel.pendingRating = 0
+              dismiss()
+            }
+            .tint(Color.appSecondary)
+          }
+          
+          ToolbarItem(placement: .confirmationAction) {
+            Button(AppStrings.done) {
+              viewModel.markAsAttended(place)
+              dismiss()
+            }
           }
         }
       }
