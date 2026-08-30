@@ -134,12 +134,11 @@ struct ShowDetailView: View {
             showingEditSheet = true
           }
           Divider()
-          Button(role: .destructive) {
+          Button {
             showingDeleteAlert = true
           } label: {
             Label(AppStrings.deletePlaceTitle, systemImage: "trash")
-              .symbolRenderingMode(.palette)
-              .foregroundStyle(Color.appPrimary)
+              .tint(Color.accentColor)
           }
         } label: {
           Image(systemName: AppStrings.Icons.ellipsisCircle)
@@ -155,9 +154,9 @@ struct ShowDetailView: View {
         dismiss()
       }
       Button(AppStrings.cancel, role: .cancel) {}
-        .tint(Color.appSecondary)
     } message: {
       Text(AppStrings.permanentlyRemove(place.placeName))
     }
+    .tint(Color.appSecondary)
   }
 }
