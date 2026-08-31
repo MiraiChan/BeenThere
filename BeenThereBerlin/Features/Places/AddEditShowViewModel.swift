@@ -71,7 +71,7 @@ final class AddEditShowViewModel: NSObject, MKLocalSearchCompleterDelegate {
   }
   
   func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
-    print("Search failed: \(error.localizedDescription)")
+
   }
   
   func select(completion: MKLocalSearchCompletion) {

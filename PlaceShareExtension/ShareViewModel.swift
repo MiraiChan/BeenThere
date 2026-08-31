@@ -17,7 +17,7 @@ class ShareViewModel: ObservableObject {
     
     func log(_ message: String) {
         #if DEBUG
-        print("ShareExtension: \(message)")
+
         #endif
     }
     

@@ -101,7 +101,7 @@ struct ShareExtensionView: View {
       viewModel.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
     } catch {
       viewModel.log("Failed to save: \(error.localizedDescription)")
-      print("Failed to create container or save: \(error)")
+
     }
   }
 }
