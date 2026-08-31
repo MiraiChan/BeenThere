@@ -40,19 +40,23 @@ struct AddEditShowView: View {
           
           if !vm.searchResults.isEmpty {
             ForEach(vm.searchResults, id: \.self) { result in
-              Button(action: {
-                vm.select(completion: result)
-              }) {
-                VStack(alignment: .leading) {
-                  Text(result.title)
-                    .foregroundStyle(Color.appSecondary)
-                  if !result.subtitle.isEmpty {
-                    Text(result.subtitle)
-                      .font(.caption)
-                      .foregroundStyle(.secondary)
+              Button(
+                action: {
+                  vm.select(completion: result)
+                },
+                label: {
+                  VStack(alignment: .leading) {
+                    Text(result.title)
+                      .foregroundStyle(Color.appSecondary)
+                    
+                    if !result.subtitle.isEmpty {
+                      Text(result.subtitle)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    }
                   }
                 }
-              }
+              )
             }
           }
         }
@@ -64,7 +68,7 @@ struct AddEditShowView: View {
           TextField(AppStrings.address, text: $vm.address)
           DatePicker(AppStrings.date, selection: $vm.date, displayedComponents: .date)
           Picker(AppStrings.status, selection: $vm.status) {
-            ForEach(VisitStatus.allCases, id:\.self) { status in
+            ForEach(VisitStatus.allCases, id: \.self) { status in
               Text(status.localizedTitle)
                 .tag(status)
             }

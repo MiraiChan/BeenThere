@@ -71,7 +71,7 @@ final class AddEditShowViewModel: NSObject, MKLocalSearchCompleterDelegate {
   }
   
   func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
-
+    
   }
   
   func select(completion: MKLocalSearchCompletion) {
@@ -89,7 +89,7 @@ final class AddEditShowViewModel: NSObject, MKLocalSearchCompleterDelegate {
         self.latitude = mapItem.location.coordinate.latitude
         self.longitude = mapItem.location.coordinate.longitude
         self.websiteURL = mapItem.url
-        self.searchQuery = AppStrings.empty // Hide search results
+        self.searchQuery = AppStrings.empty
         self.searchResults = []
       }
     }

@@ -42,8 +42,13 @@ struct OnboardingView: View {
       TabView(selection: $currentPage) {
         ForEach(pages.indices, id: \.self) { index in
           
-          OnboardingPageView(icon: pages[index].icon, color: pages[index].color, title: pages[index].title, description: pages[index].description)
-            .tag(index)
+          OnboardingPageView(
+            icon: pages[index].icon,
+            color: pages[index].color,
+            title: pages[index].title,
+            description: pages[index].description
+          )
+          .tag(index)
         }
         
         OnboardingNotificationsPage(notificationsRequested: $notificationsRequested)

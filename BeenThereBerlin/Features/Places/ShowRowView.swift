@@ -28,10 +28,10 @@ struct ShowRowView: View {
         if let rating = place.rating {
           Spacer()
           HStack(spacing: 2) {
-            ForEach(1...5, id:\.self) { star in
+            ForEach(1...5, id: \.self) { star in
               Image(systemName: star <= rating ? AppStrings.Icons.starFill : AppStrings.Icons.star)
                 .font(.caption2)
-                .foregroundStyle(star <= rating ? Color.appStarActive : Color.appStarInactive)
+                .foregroundStyle(star <= rating ? Color.accentColor : Color.appStarInactive)
             }
           }
         }

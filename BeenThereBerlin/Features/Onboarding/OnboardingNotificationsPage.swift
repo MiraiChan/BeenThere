@@ -37,7 +37,7 @@ struct OnboardingNotificationsPage: View {
             .current()
             .requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
               DispatchQueue.main.async {
-                notificationsRequested = true
+                notificationsRequested = granted
               }
             }
         }
