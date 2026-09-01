@@ -22,12 +22,24 @@ struct ShowDetailView: View {
       if let lat = place.latitude, let lon = place.longitude {
         Section {
           ZStack(alignment: .topTrailing) {
-            Map(initialPosition: .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: lon), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)))) {
+            Map(
+              initialPosition: .region(
+                MKCoordinateRegion(
+                  center: CLLocationCoordinate2D(
+                    latitude: lat,
+                    longitude: lon
+                  ), span: MKCoordinateSpan(
+                    latitudeDelta: 0.01,
+                    longitudeDelta: 0.01
+                  )
+                )
+              )
+            ) {
               Marker(place.placeName, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon))
             }
             
             Button {
-              if let url = URL(string: "https://www.google.com/maps/search/?api=1&query=\(lat),\(lon)") {
+              if let url = URL(string: "\(AppStrings.googleMapsSearch)\(lat),\(lon)") {
                 UIApplication.shared.open(url)
               }
             } label: {

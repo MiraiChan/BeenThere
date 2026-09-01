@@ -15,7 +15,11 @@ struct BeenThereBerlinApp: App {
   
   var sharedModelContainer: ModelContainer = {
     let schema = Schema([FamilyPlace.self])
-    let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false, groupContainer: .identifier("group.AlmiraKhafizova.BeenThere"))
+    let modelConfiguration = ModelConfiguration(
+      schema: schema,
+      isStoredInMemoryOnly: false,
+      groupContainer: .identifier("group.AlmiraKhafizova.BeenThere")
+    )
     
     do {
       return try ModelContainer(for: schema, configurations: [modelConfiguration])

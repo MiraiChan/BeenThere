@@ -15,12 +15,6 @@ class ShareViewModel: ObservableObject {
         self.extensionContext = extensionContext
     }
     
-    func log(_ message: String) {
-        #if DEBUG
-
-        #endif
-    }
-    
     func loadSharedData() {
         guard let items = extensionContext?.inputItems as? [NSExtensionItem] else { 
             return 

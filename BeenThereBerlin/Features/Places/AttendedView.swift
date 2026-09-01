@@ -17,7 +17,15 @@ struct AttendedView: View {
     NavigationStack {
       Group {
         if viewModel.filteredShows(allPlaces).isEmpty {
-          EmptyStateView(icon: AppStrings.Icons.map, title: viewModel.searchText.isEmpty ? AppStrings.noPlacesYet : AppStrings.noResults, message: viewModel.searchText.isEmpty ? AppStrings.startLogging : AppStrings.trySearching)
+          EmptyStateView(
+            icon: AppStrings.Icons.map,
+            title: viewModel.searchText.isEmpty
+            ? AppStrings.noPlacesYet
+            : AppStrings.noResults,
+            message: viewModel.searchText.isEmpty
+            ? AppStrings.startLogging
+            : AppStrings.trySearching
+          )
         } else {
           List {
             ForEach(viewModel.filteredShows(allPlaces)) { place in

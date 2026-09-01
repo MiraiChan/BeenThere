@@ -85,7 +85,11 @@ struct ShareExtensionView: View {
   func savePlace() {
     do {
       let schema = Schema([FamilyPlace.self])
-      let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false, groupContainer: .identifier("group.AlmiraKhafizova.BeenThere"))
+      let modelConfiguration = ModelConfiguration(
+        schema: schema,
+        isStoredInMemoryOnly: false,
+        groupContainer: .identifier("group.AlmiraKhafizova.BeenThere")
+      )
       let sharedModelContainer = try ModelContainer(for: schema, configurations: [modelConfiguration])
       
       let context = ModelContext(sharedModelContainer)
@@ -100,8 +104,8 @@ struct ShareExtensionView: View {
       
       viewModel.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
     } catch {
-      viewModel.log("Failed to save: \(error.localizedDescription)")
-
+      print("Failed to save: \(error.localizedDescription)")
+      
     }
   }
 }

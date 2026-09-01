@@ -56,6 +56,8 @@ struct SettingsView: View {
           
           Section(AppStrings.app) {
             LabeledContent(AppStrings.version, value: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0")
+            Link(AppStrings.privacyPolicy, destination: URL(string: AppStrings.privacyPolicyURL)!)
+            Link(AppStrings.termsOfUse, destination: URL(string: AppStrings.termsOfUseURL)!)
           }
           .appRowBackground()
         }
