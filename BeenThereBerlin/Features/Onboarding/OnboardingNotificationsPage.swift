@@ -43,6 +43,7 @@ struct OnboardingNotificationsPage: View {
         }
         .buttonStyle(.borderedProminent)
         .tint(Color.appSecondary)
+        .foregroundStyle(Color.appPrimary)
       }
       Spacer()
       Spacer()
