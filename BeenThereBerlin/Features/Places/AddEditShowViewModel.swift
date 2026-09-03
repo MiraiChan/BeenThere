@@ -4,7 +4,6 @@
 //
 //  Created by Almira Khafizova on 14.07.26.
 //
-
 import Foundation
 import SwiftData
 import MapKit
@@ -29,7 +28,7 @@ final class AddEditShowViewModel: NSObject, MKLocalSearchCompleterDelegate {
   var searchQuery = AppStrings.empty
   var searchResults: [MKLocalSearchCompletion] = []
   @ObservationIgnored private let completer = MKLocalSearchCompleter()
-  @ObservationIgnored private let logger = Logger(subsystem: "BeenThere", category: "AddEditShowViewModel")
+  
   
   var isValid: Bool {
     !placeName.trimmingCharacters(in: .whitespaces).isEmpty && !category.trimmingCharacters(in: .whitespaces).isEmpty
@@ -72,15 +71,20 @@ final class AddEditShowViewModel: NSObject, MKLocalSearchCompleterDelegate {
   }
   
   func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
-    logger.error("Search completion failed: \(error.localizedDescription)")
+    AppLogger.addEditShowViewModel.error(
+      "Search completion failed: \(error.localizedDescription)"
+    )
   }
   
   func select(completion: MKLocalSearchCompletion) {
     let request = MKLocalSearch.Request(completion: completion)
     let search = MKLocalSearch(request: request)
+    
     search.start { [weak self] response, error in
       if let error {
-        self?.logger.error("Search failed with error: \(error.localizedDescription)")
+        AppLogger.addEditShowViewModel.error(
+          "Search failed with error: \(error.localizedDescription)"
+        )
         return
       }
       

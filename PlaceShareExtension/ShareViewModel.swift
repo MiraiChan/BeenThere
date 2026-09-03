@@ -8,6 +8,7 @@ import Foundation
 import Combine
 import UniformTypeIdentifiers
 import LinkPresentation
+import OSLog
 
 @MainActor
 final class ShareViewModel: ObservableObject {
@@ -24,9 +25,11 @@ final class ShareViewModel: ObservableObject {
   
   func loadSharedData() {
     guard let items = extensionContext?.inputItems as? [NSExtensionItem] else {
+      AppLogger.shareViewModel.warning("No input items found in extension context.")
       return
     }
     
+    AppLogger.shareViewModel.debug("Processing \(items.count) input items.")
     for item in items {
       processItem(item)
     }
@@ -91,7 +94,10 @@ final class ShareViewModel: ObservableObject {
   }
   
   private func loadString(from attachment: NSItemProvider) {
-    _ = attachment.loadObject(ofClass: String.self) { [weak self] string, _ in
+    _ = attachment.loadObject(ofClass: String.self) { [weak self] string, error in
+      if let error {
+        AppLogger.shareViewModel.error("Failed to load string attachment: \(error.localizedDescription)")
+      }
       guard let string else {
         return
       }
@@ -103,7 +109,10 @@ final class ShareViewModel: ObservableObject {
   }
   
   private func loadURL(from attachment: NSItemProvider) {
-    _ = attachment.loadObject(ofClass: URL.self) { [weak self] url, _ in
+    _ = attachment.loadObject(ofClass: URL.self) { [weak self] url, error in
+      if let error {
+        AppLogger.shareViewModel.error("Failed to load URL attachment: \(error.localizedDescription)")
+      }
       guard let url else {
         return
       }
@@ -117,7 +126,10 @@ final class ShareViewModel: ObservableObject {
   private func loadVCard(from attachment: NSItemProvider) {
     _ = attachment.loadDataRepresentation(
       forTypeIdentifier: UTType.vCard.identifier
-    ) { [weak self] data, _ in
+    ) { [weak self] data, error in
+      if let error {
+        AppLogger.shareViewModel.error("Failed to load vCard attachment: \(error.localizedDescription)")
+      }
       guard
         let data,
         let text = String(data: data, encoding: .utf8)
@@ -248,7 +260,10 @@ final class ShareViewModel: ObservableObject {
     
     let provider = LPMetadataProvider()
     
-    provider.startFetchingMetadata(for: url) { [weak self] metadata, _ in
+    provider.startFetchingMetadata(for: url) { [weak self] metadata, error in
+      if let error {
+        AppLogger.shareViewModel.error("Failed to fetch metadata for \(url.absoluteString): \(error.localizedDescription)")
+      }
       guard
         let title = metadata?.title,
         !title.isEmpty
@@ -310,8 +325,10 @@ final class ShareViewModel: ObservableObject {
   private func setPlaceNameOrAddress(_ value: String) {
     if placeName.isEmpty {
       placeName = value
+      AppLogger.shareViewModel.debug("Parsed placeName: \(value)")
     } else if address.isEmpty && value != placeName {
       address = value
+      AppLogger.shareViewModel.debug("Parsed address: \(value)")
     }
   }
   
@@ -426,6 +443,7 @@ final class ShareViewModel: ObservableObject {
     }
     
     placeName = value
+    AppLogger.shareViewModel.debug("Parsed placeName: \(value)")
   }
   
   private func setAddressIfNeeded(_ value: String?) {
@@ -438,6 +456,7 @@ final class ShareViewModel: ObservableObject {
     }
     
     address = value
+    AppLogger.shareViewModel.debug("Parsed address: \(value)")
   }
   
   private func cleanedText(_ text: String) -> String {
