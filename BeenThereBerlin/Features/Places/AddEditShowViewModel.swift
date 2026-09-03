@@ -29,7 +29,6 @@ final class AddEditShowViewModel: NSObject, MKLocalSearchCompleterDelegate {
   var searchResults: [MKLocalSearchCompletion] = []
   @ObservationIgnored private let completer = MKLocalSearchCompleter()
   
-  
   var isValid: Bool {
     !placeName.trimmingCharacters(in: .whitespaces).isEmpty && !category.trimmingCharacters(in: .whitespaces).isEmpty
   }
