@@ -8,6 +8,7 @@
 import Foundation
 import SwiftData
 import MapKit
+import OSLog
 
 @Observable
 final class AddEditShowViewModel: NSObject, MKLocalSearchCompleterDelegate {
@@ -25,10 +26,10 @@ final class AddEditShowViewModel: NSObject, MKLocalSearchCompleterDelegate {
   var longitude: Double?
   var websiteURL: URL?
   
-  // Search properties
   var searchQuery = AppStrings.empty
   var searchResults: [MKLocalSearchCompletion] = []
   @ObservationIgnored private let completer = MKLocalSearchCompleter()
+  @ObservationIgnored private let logger = Logger(subsystem: "BeenThere", category: "AddEditShowViewModel")
   
   var isValid: Bool {
     !placeName.trimmingCharacters(in: .whitespaces).isEmpty && !category.trimmingCharacters(in: .whitespaces).isEmpty
@@ -71,20 +72,29 @@ final class AddEditShowViewModel: NSObject, MKLocalSearchCompleterDelegate {
   }
   
   func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
-    
+    logger.error("Search completion failed: \(error.localizedDescription)")
   }
   
   func select(completion: MKLocalSearchCompletion) {
     let request = MKLocalSearch.Request(completion: completion)
     let search = MKLocalSearch(request: request)
     search.start { [weak self] response, error in
+      if let error {
+        self?.logger.error("Search failed with error: \(error.localizedDescription)")
+        return
+      }
+      
       guard let self = self, let mapItem = response?.mapItems.first else { return }
       
       DispatchQueue.main.async {
         self.placeName = mapItem.name ?? completion.title
         self.address = completion.subtitle
+        
         if let poiCategory = mapItem.pointOfInterestCategory?.rawValue {
-          self.category = poiCategory.replacingOccurrences(of: "MKPOICategory", with: AppStrings.empty)
+          self.category = poiCategory.replacingOccurrences(
+            of: "MKPOICategory",
+            with: AppStrings.empty
+          )
         }
         self.latitude = mapItem.location.coordinate.latitude
         self.longitude = mapItem.location.coordinate.longitude
