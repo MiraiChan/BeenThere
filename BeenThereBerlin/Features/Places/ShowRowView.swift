@@ -13,18 +13,24 @@ struct ShowRowView: View {
       Text(place.placeName)
         .font(.headline)
       
-      HStack(spacing: 4) {
-        Text(place.category)
-        Text(AppStrings.hyphen)
-        Text(place.address)
-      }
-      .font(.subheadline)
-      .foregroundStyle(.secondary)
+      Text(place.address)
+        .font(.subheadline)
+        .foregroundStyle(.secondary)
+        .padding(.bottom, 10)
       
       HStack {
+        Text(place.category)
+          .font(.caption)
+          .foregroundStyle(.secondary)
+        
+        Text(AppStrings.bullet)
+          .font(.caption)
+          .foregroundStyle(.secondary)
+        
         Text(place.date.formatted(date: .abbreviated, time: .omitted))
           .font(.caption)
           .foregroundStyle(.secondary)
+        
         if let rating = place.rating {
           Spacer()
           HStack(spacing: 2) {

@@ -91,6 +91,7 @@ public enum AppStrings {
   
   // ShowRowView
   public static let hyphen: LocalizedStringResource = "-"
+  public static let bullet: LocalizedStringResource = "•"
   
   // UpcomingView
   public static let nothingComingUp: LocalizedStringResource = "Nothing coming up"
