@@ -46,14 +46,19 @@ struct ShowDetailView: View {
               Image(systemName: "arrow.triangle.turn.up.right.diamond.fill")
                 .font(.title2)
                 .foregroundColor(Color.appSecondary)
-                .padding(10)
+                .padding(AppConstants.Padding.medium)
                 .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
           }
-          .frame(height: 200)
-          .clipShape(RoundedRectangle(cornerRadius: 20))
-          .shadow(color: Color.appSecondary.opacity(0.15), radius: 3, x: 0, y: 1)
+          .frame(height: AppConstants.Layout.mapHeight)
+          .clipShape(RoundedRectangle(cornerRadius: AppConstants.CornerRadius.large))
+          .shadow(
+            color: Color.appSecondary.opacity(AppConstants.Opacity.shadow),
+            radius: AppConstants.Shadow.standardRadius,
+            x: 0,
+            y: AppConstants.Shadow.standardY
+          )
           .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
           .listRowBackground(Color.clear)
           .listRowSeparator(.hidden)
@@ -113,7 +118,7 @@ struct ShowDetailView: View {
             HStack {
               Text(AppStrings.number(index + 1))
                 .foregroundStyle(.secondary)
-                .frame(width: 28, alignment: .leading)
+                .frame(width: AppConstants.Layout.activityNumberWidth, alignment: .leading)
               Text(activity)
             }
           }

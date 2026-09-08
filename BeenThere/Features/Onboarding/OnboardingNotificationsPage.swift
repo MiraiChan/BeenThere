@@ -13,10 +13,10 @@ struct OnboardingNotificationsPage: View {
   
   var body: some View {
     
-    VStack(spacing: 24) {
+    VStack(spacing: AppConstants.Spacing.large) {
       Spacer()
       Image(systemName: AppStrings.Icons.bellCircleFill)
-        .font(.system(size: 90))
+        .font(.system(size: AppConstants.Icons.onboardingSize))
         .foregroundStyle(Color.accentColor)
       Text(AppStrings.placeReminders)
         .font(.largeTitle)

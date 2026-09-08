@@ -9,24 +9,24 @@ import SwiftUI
 struct ShowRowView: View {
   let place: FamilyPlace
   var body: some View {
-    VStack(alignment: .leading, spacing: 4) {
+    VStack(alignment: .leading, spacing: AppConstants.Spacing.small) {
       Text(place.placeName)
         .font(.headline)
       
       if place.address.hasPrefix("http") {
-        HStack(alignment: .center, spacing: 4) {
+        HStack(alignment: .center, spacing: AppConstants.Spacing.small) {
           Image(systemName: AppStrings.Icons.locationIcon)
             .imageScale(.small)
           Text(AppStrings.location)
         }
         .font(.subheadline)
         .foregroundStyle(.secondary)
-        .padding(.bottom, 10)
+        .padding(.bottom, AppConstants.Padding.medium)
       } else {
         Text(place.address)
           .font(.subheadline)
           .foregroundStyle(.secondary)
-          .padding(.bottom, 10)
+          .padding(.bottom, AppConstants.Padding.medium)
       }
       
       HStack {
@@ -44,7 +44,7 @@ struct ShowRowView: View {
         
         if let rating = place.rating {
           Spacer()
-          HStack(spacing: 2) {
+          HStack(spacing: AppConstants.Spacing.tiny) {
             ForEach(1...5, id: \.self) { star in
               Image(systemName: star <= rating ? AppStrings.Icons.starFill : AppStrings.Icons.star)
                 .font(.caption2)
@@ -54,6 +54,6 @@ struct ShowRowView: View {
         }
       }
     }
-    .padding(.vertical, 2)
+    .padding(.vertical, AppConstants.Padding.tiny)
   }
 }

@@ -17,7 +17,7 @@ struct MarkAttendedSheet: View {
         Color.appPrimary
           .ignoresSafeArea()
         
-        VStack(spacing: 24) {
+        VStack(spacing: AppConstants.Spacing.large) {
           Text(AppStrings.howWas(place.placeName))
             .font(.title2)
             .bold()

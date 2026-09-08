@@ -15,7 +15,7 @@ struct OnboardingView: View {
   
   init() {
     UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color.appSecondary)
-    UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color.appSecondary).withAlphaComponent(0.2)
+    UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color.appSecondary).withAlphaComponent(AppConstants.Opacity.light)
   }
   
   // swiftlint:disable:next large_tuple
@@ -64,10 +64,10 @@ struct OnboardingView: View {
           .padding()
           .background(Color.accentColor)
           .foregroundStyle(Color.appPrimary)
-          .clipShape(RoundedRectangle(cornerRadius: 16))
+          .clipShape(RoundedRectangle(cornerRadius: AppConstants.CornerRadius.standard))
       }
       .padding(.horizontal)
-      .padding(.bottom, 32)
+      .padding(.bottom, AppConstants.Padding.large)
     }
     .background(Color.appPrimary.ignoresSafeArea())
   }

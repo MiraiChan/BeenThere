@@ -30,11 +30,11 @@ struct AddEditShowView: View {
           TextField(AppStrings.searchAppleMaps, text: Binding(
             get: { vm.searchQuery },
             set: { vm.updateSearchQuery($0) }
-          ), prompt: Text(AppStrings.searchAppleMaps).foregroundColor(Color.appSecondary.opacity(0.6)))
+          ), prompt: Text(AppStrings.searchAppleMaps).foregroundColor(Color.appSecondary.opacity(AppConstants.Opacity.medium)))
           .foregroundStyle(Color.appPrimary)
           .tint(Color.accentColor)
           .listRowBackground(
-            Color.appSecondary.opacity(vm.searchQuery.isEmpty ? 0.1 : 0.9)
+            Color.appSecondary.opacity(vm.searchQuery.isEmpty ? AppConstants.Opacity.faint : AppConstants.Opacity.strong)
           )
           .focused($isSearchFocused)
           
@@ -79,7 +79,7 @@ struct AddEditShowView: View {
         if viewModel.status == .visited {
           Section(AppStrings.rating) {
             StarRatingView(rating: $vm.rating)
-              .padding(.vertical, 4)
+              .padding(.vertical, AppConstants.Padding.small)
           }
           .appRowBackground()
         }
@@ -95,7 +95,7 @@ struct AddEditShowView: View {
             HStack {
               Text(AppStrings.number(index + 1))
                 .foregroundStyle(.secondary)
-                .frame(width: 28, alignment: .leading)
+                .frame(width: AppConstants.Layout.activityNumberWidth, alignment: .leading)
               Text(viewModel.activities[index])
             }
             .swipeActions(edge: .trailing, allowsFullSwipe: true) {

@@ -14,10 +14,10 @@ struct OnboardingPageView: View {
   let description: LocalizedStringResource
   
   var body: some View {
-    VStack(spacing: 24) {
+    VStack(spacing: AppConstants.Spacing.large) {
       Spacer()
       Image(systemName: icon)
-        .font(.system(size: 90))
+        .font(.system(size: AppConstants.Icons.onboardingSize))
         .foregroundStyle(color)
       Text(title)
         .font(.largeTitle)

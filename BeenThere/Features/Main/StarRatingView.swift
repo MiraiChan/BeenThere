@@ -15,7 +15,7 @@ struct StarRatingView: View {
     HStack {
       ForEach(1 ... maxRating, id: \.self) { star in
         Button {
-          withAnimation(.spring(response: 0.5)) {
+          withAnimation(.spring(response: AppConstants.Animation.springResponse)) {
             rating = rating == star ? 0 : star
           }
         }
@@ -23,8 +23,8 @@ struct StarRatingView: View {
           Image(systemName: star <= rating ? AppStrings.Icons.starFill : AppStrings.Icons.star)
             .font(.title2)
             .foregroundStyle(star <= rating ? Color.accentColor : Color.appStarInactive)
-            .scaleEffect(star <= rating ? 1.1 : 1.0)
-            .animation(.spring(response: 0.5), value: rating)
+            .scaleEffect(star <= rating ? AppConstants.Animation.scaleActive : AppConstants.Animation.scaleInactive)
+            .animation(.spring(response: AppConstants.Animation.springResponse), value: rating)
         }
         .buttonStyle(.plain)
       }
