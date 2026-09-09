@@ -108,6 +108,9 @@ public enum AppStrings {
   public static let saveToBeenThere: LocalizedStringResource = "Save to BeenThere"
   public static let unknownPlace: LocalizedStringResource = "Unknown Place"
   public static let uncategorized: LocalizedStringResource = "Uncategorized"
+  public static let sharedLink: LocalizedStringResource = "Shared Link"
+  public static let websiteCategory: LocalizedStringResource = "Website"
+  public static let mapsCategory: LocalizedStringResource = "Maps"
   
   // System Images & Icons
   public enum Icons {

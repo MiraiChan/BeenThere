@@ -84,7 +84,7 @@ final class ShareURLParser {
         
         result.address = url.absoluteString
         if currentCategory.isEmpty {
-            result.category = "Maps"
+            result.category = String(localized: AppStrings.mapsCategory)
         }
         await loadMetadataIfNeeded(for: url, result: &result, currentPlaceName: currentPlaceName)
     }
@@ -127,7 +127,7 @@ final class ShareURLParser {
         result.address = url.absoluteString
         
         if currentCategory.isEmpty {
-            result.category = "Website"
+            result.category = String(localized: AppStrings.websiteCategory)
         }
         await loadMetadataIfNeeded(for: url, result: &result, currentPlaceName: currentPlaceName)
     }
@@ -137,7 +137,7 @@ final class ShareURLParser {
             return
         }
         
-        let fallbackName = url.host ?? "Shared Link"
+        let fallbackName = url.host ?? String(localized: AppStrings.sharedLink)
         result.placeName = fallbackName
         
         let provider = LPMetadataProvider()
